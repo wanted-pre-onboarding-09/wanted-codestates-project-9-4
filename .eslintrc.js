@@ -31,5 +31,7 @@ module.exports = {
     ],
     'multiline-ternary': 'off',
     indent: 'off',
+    'no-param-reassign': 'off',
+    'no-shadow': 'off',
   },
 };

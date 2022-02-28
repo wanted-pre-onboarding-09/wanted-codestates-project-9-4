@@ -7,7 +7,18 @@ const initialState = {
 const tabIndexSlice = createSlice({
   name: 'tabIndex',
   initialState,
-  reudcers: {},
+  reudcers: {
+    nextStep: (state) => ({
+      ...state,
+      currentIdx: state.currentIdx + 1,
+    }),
+    previousStep: (state) => ({
+      ...state,
+      currentIdx:
+        state.currentIdx > 1 ? state.currentIdx - 1 : state.currentIdx,
+    }),
+    clearStep: () => initialState,
+  },
   extraReducers: {},
 });
 
