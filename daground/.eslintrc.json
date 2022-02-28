@@ -1,0 +1,13 @@
+{
+  "plugins": ["prettier"],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "airbnb"],
+  "rules": {
+    "comma-dangle": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "prettier/prettier": ["error", { "singleQuote": true, "parser": "flow" }]
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
