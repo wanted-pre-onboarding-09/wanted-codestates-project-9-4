@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderBox = styled.div`
   width: 100%;
@@ -12,9 +13,11 @@ const HeaderBox = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const Logo = styled.h2`
+const Logo = styled.a`
   font-weight: bold;
   padding: 1rem;
+  text-decoration: none;
+  font-size: 1.5rem;
 `;
 
 const StyleList = styled.div`
@@ -38,9 +41,9 @@ const Slider = styled.div`
   left: 0;
   bottom: 0;
   width: 8rem;
-  border: 2px solid #669cfe;
+  border-bottom: 4px solid #5e72e4;
   position: absolute;
-  transition: 0.5s;
+  transition: 0.3s;
 `;
 
 function Header() {
@@ -50,7 +53,9 @@ function Header() {
   };
   return (
     <HeaderBox>
-      <Logo>Sandbank</Logo>
+      <Link to="/">
+        <Logo>Sandbank</Logo>
+      </Link>
       <StyleList>
         <ButtonBox id="0" onClick={tapChange}>
           유튜브
