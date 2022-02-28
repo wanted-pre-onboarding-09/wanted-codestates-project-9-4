@@ -16,11 +16,18 @@ const Carousel = styled.div`
   border: 1px solid black;
 `;
 
+const CardBox = styled.div`
+  margin: 2rem 0;
+  width: 55rem;
+  height: 25rem;
+  border: 1px solid black;
+`;
+
 function Home() {
   return (
     <HomeBox>
       <Carousel>Carousel</Carousel>
-      <Carousel>Card</Carousel>
+      <CardBox>Card</CardBox>
     </HomeBox>
   );
 }
