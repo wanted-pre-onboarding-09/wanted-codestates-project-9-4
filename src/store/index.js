@@ -5,8 +5,8 @@ import tabIndexSlice from './tab/tabIndexSlice';
 
 const store = configureStore({
   reducer: {
-    dataSlice,
-    tabIndexSlice,
+    data: dataSlice,
+    tab: tabIndexSlice,
   },
 });
 

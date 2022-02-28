@@ -31,6 +31,11 @@ module.exports = {
     ],
     'multiline-ternary': 'off',
     indent: 'off',
+<<<<<<< HEAD
     'linebreak-style': 0,
+=======
+    'no-param-reassign': 'off',
+    'no-shadow': 'off',
+>>>>>>> 52d16f828d8cb5e7fc72d0dfba47d965a23f8e25
   },
 };
