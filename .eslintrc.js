@@ -33,5 +33,6 @@ module.exports = {
     indent: 'off',
     'no-param-reassign': 'off',
     'no-shadow': 'off',
+    'linebreak-style': 0,
   },
 };
