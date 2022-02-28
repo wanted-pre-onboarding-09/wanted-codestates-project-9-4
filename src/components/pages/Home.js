@@ -1,33 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import Main from '../atoms/Main';
+import Container from '../atoms/Container';
+import Slider from '../atoms/Slider';
 
 const HomeBox = styled.div`
-  margin: 2rem auto;
-  width: 66rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #f7f7fb;
 `;
 
 const Carousel = styled.div`
   width: 55rem;
-  height: 25rem;
-  border: 1px solid black;
+  height: 30rem;
 `;
 
 const CardBox = styled.div`
   margin: 2rem 0;
   width: 55rem;
-  height: 25rem;
-  border: 1px solid black;
 `;
 
 function Home() {
   return (
     <HomeBox>
-      <Carousel>Carousel</Carousel>
-      <CardBox>Card</CardBox>
+      <Carousel>
+        <Slider />
+      </Carousel>
+      <CardBox>
+        <Main>
+          <Container />
+        </Main>
+      </CardBox>
     </HomeBox>
   );
 }
