@@ -1,20 +1,20 @@
 import React from 'react';
-import Likes from './components/atoms/Likes';
-import Share from './components/atoms/Share';
-import dummyContent from './static/dummyContent';
-import Main from './components/atoms/Main';
-import Test from './components/pages/Test';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import Detail from './components/pages/Detail';
+import Header from './components/organisms/header';
 
 function App() {
-  const url = 'www.naver.com';
+  // console.log(dummyContent[0]);
+  // const url = 'www.naver.com';
   return (
-    <div>
-      <Main>
-        <Test />
-      </Main>
-      <Likes id={dummyContent[0].id} likeCnt={dummyContent[0].like_cnt} />
-      <Share url={url} />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/detail/" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
