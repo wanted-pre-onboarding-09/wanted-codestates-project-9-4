@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
+import Likes from './components/Likes';
+import Share from './components/Share';
 
 function App() {
+  const url = 'www.naver.com';
   return (
     <div className="App">
-      <h1>dd44415</h1>
+      <Likes />
+      <Share url={url} />
     </div>
   );
 }
