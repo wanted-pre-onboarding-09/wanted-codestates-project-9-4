@@ -1,19 +1,75 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+const change1 = keyframes`
+  0% {
+    transform: scale(1.0);
+  }
+  75% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(0);
+  }
+`;
+
+const change2 = keyframes`
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+`;
+
 const LikesContainer = styled.span`
+  width: 30px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  visibility: visible;
+`;
+
+const LikesImg = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  > .heart-empty {
+    position: absolute;
+    z-index: 1;
+    animation: ${change2} 1s forwards;
+    &.clicked {
+      animation: ${change1} 1s forwards;
+      z-index: 0;
+    }
+  }
+
+  > .heart-full {
+    position: absolute;
+    z-index: 0;
+    animation: ${change1} 1s forwards;
+    &.clicked {
+      animation: ${change2} 1s forwards;
+      z-index: 1;
+    }
+  }
 `;
 
 const LikeCount = styled.div`
+  text-align: center;
+  width: 50%;
   font-size: 1rem;
-  margin-left: 0.3rem;
   color: #848484;
 `;
 
@@ -35,6 +91,7 @@ function Likes({ id, likeCnt }) {
   const LikeHandler = () => {
     if (!isLikes) {
       /* 좋아요를 누르지 않은 경우 */
+
       setIsLikes(!isLikes);
       setLikesNumber(likesNumber + 1);
       if (localStorage.getItem(id)) {
@@ -54,11 +111,22 @@ function Likes({ id, likeCnt }) {
 
   return (
     <LikesContainer onClick={LikeHandler}>
-      {isLikes ? (
-        <FaHeart color="red" background="red" size="1rem" pull="left" />
-      ) : (
-        <FiHeart color="#848484" size="1rem" pull="left" />
-      )}
+      <LikesImg>
+        <FaHeart
+          className={`heart-full ${isLikes ? 'clicked' : ''}`}
+          color="red"
+          background="red"
+          size="1rem"
+          pull="left"
+        />
+        <FiHeart
+          className={`heart-empty ${isLikes ? 'clicked' : ''}`}
+          color="#848484"
+          size="1rem"
+          pull="left"
+        />
+      </LikesImg>
+
       <LikeCount>{likesNumber}</LikeCount>
     </LikesContainer>
   );
