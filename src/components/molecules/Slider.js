@@ -8,16 +8,19 @@ function Slider() {
   // 임시데이터
   const datas = [
     {
+      id: 1,
       img: 'https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg',
     },
-    { img: 'https://picsum.photos/seed/picsum/200/300' },
     {
-      img: 'https://picsum.photos/id/237/200/300',
+      id: 2,
+      img: 'https://picsum.photos/seed/picsum/200/300',
     },
+    { id: 3, img: 'https://picsum.photos/id/237/200/300' },
     {
+      id: 4,
       img: 'https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg',
     },
-    { img: 'https://picsum.photos/seed/picsum/200/300' },
+    { id: 5, img: 'https://picsum.photos/seed/picsum/200/300' },
   ];
 
   const IMG_WIDTH = 42.5;
@@ -66,7 +69,7 @@ function Slider() {
     <SliderContainer>
       <SliderBox ref={slideRef}>
         {datas.map((data) => (
-          <SliderItem key={data}>
+          <SliderItem key={data.id}>
             <Img src={data.img} alt="slide__img" />
           </SliderItem>
         ))}
