@@ -4,10 +4,16 @@ import PropTypes from 'prop-types';
 
 const DotList = styled.ul`
   display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
 `;
 
 const DotItem = styled.li`
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const DotBtn = styled.button`
