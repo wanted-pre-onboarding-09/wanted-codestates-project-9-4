@@ -99,7 +99,7 @@ const StyledCardList = styled.ul`
     margin-left: 0.3rem;
   }
   .like-share {
-    min-width: 130px;
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;

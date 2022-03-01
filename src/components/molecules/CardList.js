@@ -23,7 +23,6 @@ function CardList({ cardData }) {
                 <Likes id={card.id} likeCnt={card.like_cnt} />
                 <Share url={card.link} />
               </div>
-              <Likes id={card.id} likeCnt={card.like_cnt} />
             </div>
           </div>
         </li>

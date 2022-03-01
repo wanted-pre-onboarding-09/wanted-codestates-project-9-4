@@ -9,6 +9,7 @@ const ShareContainer = styled.span`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 15px;
 `;
 
 // eslint-disable-next-line react/prop-types
