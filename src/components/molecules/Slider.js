@@ -4,6 +4,7 @@ import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import SliderButton from '../atoms/SliderButton';
 import SliderDots from '../atoms/SliderDots';
+import SliderInfo from '../atoms/SliderInfo';
 
 function Slider({ contentsDatas }) {
   const [sliderDatas, setSliderDatas] = useState([]);
@@ -71,6 +72,7 @@ function Slider({ contentsDatas }) {
         {sliderDatas.map((data) => (
           <SliderItem key={data.index_id}>
             <Img src={data.image} alt="slide__img" />
+            <SliderInfo info={data} />
           </SliderItem>
         ))}
       </SliderBox>
@@ -114,7 +116,7 @@ const SliderContainer = styled.div`
 
 const SliderBox = styled.div`
   width: 212.5rem;
-  height: 23.75rem;
+  height: 30rem;
 `;
 
 const SliderItem = styled.div`
