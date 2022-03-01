@@ -13,9 +13,7 @@ Main.propTypes = {
 export default Main;
 
 const StyledWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  padding: 5rem;
+  width: 100%;
+  max-width: 1200px;
   background: #f7f7fb;
 `;
