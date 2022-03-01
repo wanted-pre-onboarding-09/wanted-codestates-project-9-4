@@ -26,6 +26,10 @@ function Slider({ contentsDatas }) {
   const [speed, setSpeed] = useState(500);
   const slideRef = useRef(null);
 
+  const moveSlider = (index) => {
+    setSlideIndex(index);
+  };
+
   const prevSlide = () => {
     if (slideIndex >= 0) {
       setSpeed(500);
@@ -70,7 +74,11 @@ function Slider({ contentsDatas }) {
           </SliderItem>
         ))}
       </SliderBox>
-      <SliderDots curIndex={slideIndex} contentsDatas={contentsDatas} />
+      <SliderDots
+        curIndex={slideIndex}
+        contentsDatas={contentsDatas}
+        moveSlider={moveSlider}
+      />
       <SliderButton handleBtn={prevSlide} left="calc((100% - 880px)/2);">
         <BsChevronLeft color="#979797" size="2.5rem" />
       </SliderButton>
