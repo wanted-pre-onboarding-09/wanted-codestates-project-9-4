@@ -1,30 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import SliderButton from '../atoms/SliderButton';
 import SliderDots from '../atoms/SliderDots';
 
-function Slider() {
-  // 임시데이터
-  const datas = [
-    {
-      id: 1,
-      img: 'https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg',
-    },
-    {
-      id: 2,
-      img: 'https://picsum.photos/seed/picsum/200/300',
-    },
-    { id: 3, img: 'https://picsum.photos/id/237/200/300' },
-    {
-      id: 4,
-      img: 'https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg',
-    },
-    { id: 5, img: 'https://picsum.photos/seed/picsum/200/300' },
-  ];
+function Slider({ contentsDatas }) {
+  const [sliderDatas, setSliderDatas] = useState([]);
+
+  useEffect(() => {
+    let cloneData = [...contentsDatas];
+    cloneData.unshift(cloneData[cloneData.length - 1]);
+    cloneData.push(cloneData[1]);
+    cloneData = cloneData.map((data, index) => ({
+      ...data,
+      index_id: index + 1,
+    }));
+    setSliderDatas(cloneData);
+  }, [contentsDatas]);
 
   const IMG_WIDTH = 42.5;
-  const TOTAL_SLIDE = datas.length;
+  const TOTAL_SLIDE = sliderDatas.length;
 
   const [slideIndex, setSlideIndex] = useState(1);
   const [speed, setSpeed] = useState(500);
@@ -38,7 +34,7 @@ function Slider() {
     if (slideIndex === 1) {
       setTimeout(() => {
         setSpeed(0);
-        setSlideIndex(3);
+        setSlideIndex(TOTAL_SLIDE - 2);
       }, 500);
     }
   };
@@ -68,13 +64,13 @@ function Slider() {
   return (
     <SliderContainer>
       <SliderBox ref={slideRef}>
-        {datas.map((data) => (
-          <SliderItem key={data.id}>
-            <Img src={data.img} alt="slide__img" />
+        {sliderDatas.map((data) => (
+          <SliderItem key={data.index_id}>
+            <Img src={data.image} alt="slide__img" />
           </SliderItem>
         ))}
       </SliderBox>
-      <SliderDots curIndex={slideIndex} />
+      <SliderDots curIndex={slideIndex} contentsDatas={contentsDatas} />
       <SliderButton handleBtn={prevSlide} left="calc((100% - 880px)/2);">
         <BsChevronLeft color="#979797" size="2.5rem" />
       </SliderButton>
@@ -84,6 +80,23 @@ function Slider() {
     </SliderContainer>
   );
 }
+
+Slider.propTypes = {
+  contentsDatas: PropTypes.arrayOf(
+    PropTypes.shape({
+      body: null || PropTypes.string,
+      id: PropTypes.number,
+      image: PropTypes.string,
+      like_cnt: PropTypes.number,
+      like_top: PropTypes.number,
+      link: PropTypes.string,
+      sector_id: PropTypes.number,
+      title: PropTypes.string,
+      upload_date: PropTypes.string,
+    }),
+  ).isRequired,
+};
+
 const SliderContainer = styled.div`
   width: 42.5rem;
   overflow: hidden;
