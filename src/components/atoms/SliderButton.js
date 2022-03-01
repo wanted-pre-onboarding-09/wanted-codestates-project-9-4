@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export const StyledSliderButton = styled.button`
+const StyledSliderButton = styled.button`
   width: 60px;
   height: 60px;
   border: none;
