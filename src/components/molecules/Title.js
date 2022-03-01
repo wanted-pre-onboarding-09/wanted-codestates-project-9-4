@@ -25,6 +25,7 @@ const StyledTitle = styled.div`
   padding-left: 35px;
   display: flex;
   align-items: center;
+  justify-content: center;
   h1 {
     font-size: 1.5rem;
   }

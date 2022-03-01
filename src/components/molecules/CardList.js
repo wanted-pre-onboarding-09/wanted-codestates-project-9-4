@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes, { number, string } from 'prop-types';
-import Card from '../atoms/Card';
+import CardImg from '../atoms/CardImg';
+import CardTitle from '../atoms/CardTitle';
+import CardDate from '../atoms/CardDate';
 
 function CardList({ cardData }) {
   return (
     <>
       {cardData.map((card) => (
-        <Card item={card} key={card.id} />
+        <li key={card.id} className="card">
+          <CardImg itemSrc={card.image} />
+          <div className="card-main">
+            <CardTitle itemTitle={card.title} />
+            <div className="card-footer">
+              <CardDate itemDate={card.upload_date} />
+            </div>
+          </div>
+        </li>
       ))}
     </>
   );

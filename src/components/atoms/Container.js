@@ -33,5 +33,4 @@ const StyledContainer = styled.section`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 50px;
   border-radius: 20px;
-  margin: 200px 10px;
 `;
