@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player/youtube';
 
 function ContentYoutube({ youtube }) {
-  return <p>{youtube}</p>;
+  return (
+    <ReactPlayer width="100%" controls="true" url={`youtu.be/${youtube}`} />
+  );
 }
 
 export default ContentYoutube;

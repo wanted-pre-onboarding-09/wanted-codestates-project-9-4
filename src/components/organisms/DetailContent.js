@@ -19,7 +19,9 @@ function DetailList({ contents }) {
             <ContentHeader header={content.sector_id} />
           </div>
           {content.sector_id === 2 ? (
-            <ContentYoutube youtube={content.link} />
+            <div className="detail-youtube">
+              <ContentYoutube youtube={content.link} />
+            </div>
           ) : (
             <div className="detail-img">
               <CardImg itemSrc={content.image} />
