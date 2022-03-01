@@ -25,6 +25,10 @@ const InfoBox = styled.div`
   background-color: #ffffff;
   border-radius: 14px;
   padding: 20px;
+  @media screen and (max-width: 768px) {
+    width: 24rem;
+    height: 4rem;
+  }
 `;
 
 const LeftBox = styled.div`

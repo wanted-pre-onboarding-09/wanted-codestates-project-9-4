@@ -2,20 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledSliderButton = styled.button`
-  width: 60px;
-  height: 60px;
-  border: none;
-  background-color: transparent;
-  position: absolute;
-  top: 400px;
-  left: ${(props) => props.left && props.left};
-  right: ${(props) => props.right && props.right};
-  @media only screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
 function SliderButton({ handleBtn, children, left, right }) {
   return (
     <StyledSliderButton
@@ -30,6 +16,7 @@ function SliderButton({ handleBtn, children, left, right }) {
 }
 
 export default SliderButton;
+
 SliderButton.defaultProps = {
   left: null,
   right: null,
@@ -41,3 +28,17 @@ SliderButton.propTypes = {
   left: PropTypes.string,
   right: PropTypes.string,
 };
+
+const StyledSliderButton = styled.button`
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 350px;
+  left: ${(props) => props.left && props.left};
+  right: ${(props) => props.right && props.right};
+  @media only screen and (max-width: 977px) {
+    display: none;
+  }
+`;

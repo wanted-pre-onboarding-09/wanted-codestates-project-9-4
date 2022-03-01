@@ -7,6 +7,9 @@ const DotList = styled.ul`
   justify-content: center;
   width: 100%;
   margin-top: 40px;
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 const DotItem = styled.li`
