@@ -27,6 +27,7 @@ function Home() {
   }));
 
   const dispatch = useDispatch();
+  console.log(contents[0]);
 
   useEffect(() => {
     dispatch(fetchDataBySectorId(currentIdx));
