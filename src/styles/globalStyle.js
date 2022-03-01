@@ -8,6 +8,21 @@ const GlobalStyle = createGlobalStyle`
   body {
     
   }
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button{
+    cursor: pointer;
+    outline: 0;
+}
+
 `;
 
 export default GlobalStyle;

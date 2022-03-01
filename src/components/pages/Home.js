@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Main from '../atoms/Main';
-import Slider from '../atoms/Slider';
 import Container from '../atoms/Container';
 import MainList from '../organisms/MainList';
+import MainSlider from '../organisms/MainSlider';
 import Subscribe from '../molecules/Subscribe';
 import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
 import Loading from '../atoms/Loading';
@@ -40,7 +40,7 @@ function Home() {
         ) : (
           <>
             <Container>
-              <Slider />
+              <MainSlider />
             </Container>
             <Subscribe />
             <Container>
