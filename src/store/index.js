@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import dataSlice from './data/dataSlice';
-import tabIndexSlice from './tab/tabIndexSlice';
+import dataReducer from './data/dataSlice';
+import tabIndexReducer from './tab/tabIndexSlice';
 
 const store = configureStore({
   reducer: {
-    data: dataSlice,
-    tab: tabIndexSlice,
+    data: dataReducer,
+    tab: tabIndexReducer,
   },
 });
 

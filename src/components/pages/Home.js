@@ -40,7 +40,7 @@ function Home() {
         ) : (
           <>
             <Container>
-              <MainSlider />
+              <MainSlider contents={contents} />
             </Container>
             <Subscribe />
             <Container>
