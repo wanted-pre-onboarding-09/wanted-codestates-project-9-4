@@ -1,15 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-function MoreButton() {
-  return <StyledMoreButton>더보기</StyledMoreButton>;
+function MoreButton({ range, setRange }) {
+  const onClick = () => {
+    setRange(!range);
+  };
+  return (
+    <StyledMoreButton onClick={onClick}>
+      {range ? '더보기' : '접기'}
+    </StyledMoreButton>
+  );
 }
+
+MoreButton.propTypes = {
+  setRange: PropTypes.func,
+  range: PropTypes.bool,
+};
+MoreButton.defaultProps = {
+  setRange: () => {},
+  range: true,
+};
 export default MoreButton;
 const StyledMoreButton = styled.button`
-  width: 80%;
+  width: 100%;
   font-size: 1.5rem;
   display: block;
-  margin: 0 auto;
   padding: 10px;
   border: none;
   border-radius: 5px;
