@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import CardImg from '../atoms/CardImg';
 import CardTitle from '../atoms/CardTitle';
 import CardDate from '../atoms/CardDate';
+import Likes from '../atoms/Likes';
+import Share from '../atoms/Share';
 
 function CardList({ cardData }) {
   return (
@@ -14,6 +16,10 @@ function CardList({ cardData }) {
             <CardTitle itemTitle={card.title} />
             <div className="card-footer">
               <CardDate itemDate={card.upload_date} />
+              <div className="like-share">
+                <Likes id={card.id} likeCnt={card.like_cnt} />
+                <Share url={card.link} />
+              </div>
             </div>
           </div>
         </li>
