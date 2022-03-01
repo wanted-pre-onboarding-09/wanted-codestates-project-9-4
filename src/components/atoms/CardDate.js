@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function CardDate({ itemDate }) {
-  return <span>{itemDate}</span>;
+  return <span width="">{itemDate}</span>;
 }
 
 export default CardDate;

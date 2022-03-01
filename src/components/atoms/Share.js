@@ -3,16 +3,12 @@ import styled from 'styled-components';
 import { FiShare } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 
-const ShareContainer = styled.div`
-  width: 100px;
-  height: 100px;
-  margin: 100px;
+const ShareContainer = styled.span`
   cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -23,7 +19,8 @@ function Share({ url }) {
 
   return (
     <ShareContainer>
-      <FiShare color="#848484" size="2rem" pull="left" onClick={ShareHandler} />
+      <FiShare color="#848484" size="1rem" pull="left" onClick={ShareHandler} />
+      <span className="share-title">공유하기</span>
     </ShareContainer>
   );
 }
