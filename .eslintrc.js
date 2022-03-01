@@ -34,5 +34,6 @@ module.exports = {
     'linebreak-style': 0,
     'no-param-reassign': 'off',
     'no-shadow': 'off',
+    'consistent-return': 'off',
   },
 };

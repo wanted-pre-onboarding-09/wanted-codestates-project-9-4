@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
+import PropTypes from 'prop-types';
 import CardList from '../molecules/CardList';
 import Title from '../molecules/Title';
 import MoreButton from '../atoms/MoreButton';
 
-function MainList() {
-  const { currentIdx } = useSelector(({ tab }) => tab);
-  const { contents } = useSelector(({ data }) => data);
-  const { sector } = useSelector(({ data }) => data);
+function MainList({ sector, contents, currentIdx }) {
+  // function MainContent({ sector, contents, currentIdx }) {
+
   const sectorFilter = sector.filter((el) => el.id === currentIdx);
   const [range, setRange] = useState(true);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchDataBySectorId(currentIdx));
-  }, []);
-
-  if (!sectorFilter.length && !contents.length) {
-    return <h1>로딩중</h1>;
-  }
   const contentsRange = contents.slice(0, range ? 6 : contents.length);
+
   return (
     <>
-      <Title text={sectorFilter[0].title} tab={sectorFilter[0].type} />
+      <Title text={sectorFilter[0]?.title} tab={sectorFilter[0]?.type} />
       <StyledCardList className="card-list">
         <CardList cardData={contentsRange} />
       </StyledCardList>
@@ -33,7 +23,37 @@ function MainList() {
   );
 }
 
+MainList.propTypes = {
+  sector: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      script_en: PropTypes.string,
+      sector_en: PropTypes.string,
+      sector_kr: PropTypes.string,
+      sort: PropTypes.number,
+      title: PropTypes.string,
+      type: PropTypes.string,
+      url: PropTypes.string,
+    }),
+  ).isRequired,
+  contents: PropTypes.arrayOf(
+    PropTypes.shape({
+      body: null || PropTypes.string,
+      id: PropTypes.number,
+      image: PropTypes.string,
+      like_cnt: PropTypes.number,
+      like_top: PropTypes.number,
+      link: PropTypes.string,
+      sector_id: PropTypes.number,
+      title: PropTypes.string,
+      upload_date: PropTypes.string,
+    }),
+  ).isRequired,
+  currentIdx: PropTypes.number.isRequired,
+};
+
 export default MainList;
+// export default MainContent;
 
 const StyledCardList = styled.ul`
   display: grid;
