@@ -28,18 +28,14 @@ const DotBtn = styled.button`
 // `${({ theme }) => theme.colors.lightGray}`
 // background-color: ${({ theme }) => theme.colors.lightBlue};
 
-function SliderDots({ curIndex }) {
+function SliderDots({ curIndex, contentsDatas }) {
   return (
     <DotList>
-      <DotItem>
-        <DotBtn active={curIndex === 1} />
-      </DotItem>
-      <DotItem>
-        <DotBtn active={curIndex === 2} />
-      </DotItem>
-      <DotItem>
-        <DotBtn active={curIndex === 3} />
-      </DotItem>
+      {contentsDatas.map((data, index) => (
+        <DotItem key={data.id}>
+          <DotBtn active={curIndex === index + 1} />
+        </DotItem>
+      ))}
     </DotList>
   );
 }
@@ -47,5 +43,18 @@ function SliderDots({ curIndex }) {
 export default SliderDots;
 
 SliderDots.propTypes = {
+  contentsDatas: PropTypes.arrayOf(
+    PropTypes.shape({
+      body: null || PropTypes.string,
+      id: PropTypes.number,
+      image: PropTypes.string,
+      like_cnt: PropTypes.number,
+      like_top: PropTypes.number,
+      link: PropTypes.string,
+      sector_id: PropTypes.number,
+      title: PropTypes.string,
+      upload_date: PropTypes.string,
+    }),
+  ).isRequired,
   curIndex: PropTypes.number.isRequired,
 };
