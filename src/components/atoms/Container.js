@@ -1,23 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
 
 function Container({ children }) {
-  const { sector, contents } = useSelector(({ data }) => ({
-    sector: data.sector,
-    contents: data.contents,
-  }));
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchDataBySectorId(1));
-  }, []);
-
-  if (!sector && !contents) {
-    return <h1>로딩중</h1>;
-  }
-
   return <StyledContainer>{children}</StyledContainer>;
 }
 
