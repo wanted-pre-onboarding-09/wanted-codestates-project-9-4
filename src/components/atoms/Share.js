@@ -9,6 +9,7 @@ const ShareContainer = styled.span`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 15px;
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -18,15 +19,15 @@ function Share({ url }) {
   };
 
   return (
-    <ShareContainer>
-      <FiShare color="#848484" size="1rem" pull="left" onClick={ShareHandler} />
+    <ShareContainer onClick={ShareHandler}>
+      <FiShare color="#848484" size="1rem" pull="left" />
       <span className="share-title">공유하기</span>
     </ShareContainer>
   );
 }
 
 Share.propsTypes = {
-  url: PropTypes.string,
+  url: PropTypes.string.isRequired,
 };
 
 export default Share;

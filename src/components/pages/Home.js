@@ -19,7 +19,7 @@ const HomeWrap = styled.div`
 `;
 
 function Home() {
-  // const { currentIdx } = useSelector(({ tab }) => tab);
+  const { currentIdx } = useSelector(({ tab }) => tab);
   const { loading, sector, contents } = useSelector(({ data }) => ({
     loading: data.loading,
     sector: data.sector,
@@ -27,10 +27,11 @@ function Home() {
   }));
 
   const dispatch = useDispatch();
+  console.log(contents[0]);
 
   useEffect(() => {
-    dispatch(fetchDataBySectorId(3));
-  }, []);
+    dispatch(fetchDataBySectorId(currentIdx));
+  }, [currentIdx]);
 
   return (
     <HomeWrap>
@@ -44,7 +45,11 @@ function Home() {
             </Container>
             <Subscribe />
             <Container>
-              <MainList sector={sector} contents={contents} currentIdx={3} />
+              <MainList
+                sector={sector}
+                contents={contents}
+                currentIdx={currentIdx}
+              />
             </Container>
           </>
         )}

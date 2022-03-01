@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CardImg from '../atoms/CardImg';
 import CardTitle from '../atoms/CardTitle';
 import CardDate from '../atoms/CardDate';
@@ -11,7 +12,9 @@ function CardList({ cardData }) {
     <>
       {cardData.map((card) => (
         <li key={card.id} className="card">
-          <CardImg itemSrc={card.image} />
+          <Link to={`/detail/${card.id}`}>
+            <CardImg itemSrc={card.image} />
+          </Link>
           <div className="card-main">
             <CardTitle itemTitle={card.title} />
             <div className="card-footer">
