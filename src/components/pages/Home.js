@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Main from '../atoms/Main';
-import Slider from '../atoms/Slider';
 import Container from '../atoms/Container';
 import MainList from '../organisms/MainList';
+import MainSlider from '../organisms/MainSlider';
 
 const HomeWrap = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ function Home() {
       <Main>
         <>
           <Container>
-            <Slider />
+            <MainSlider />
           </Container>
           <Container>
             <MainList />
