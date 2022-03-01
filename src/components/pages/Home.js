@@ -4,6 +4,7 @@ import Main from '../atoms/Main';
 import Slider from '../atoms/Slider';
 import Container from '../atoms/Container';
 import MainList from '../organisms/MainList';
+import Subscribe from '../molecules/Subscribe';
 
 const HomeWrap = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ function Home() {
           <Container>
             <Slider />
           </Container>
+          <Subscribe />
           <Container>
             <MainList />
           </Container>
