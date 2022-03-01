@@ -31,6 +31,6 @@ const StyledContainer = styled.section`
   width: 100%;
   max-width: 1200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 50px;
+  padding: 40px;
   border-radius: 20px;
 `;
