@@ -14,6 +14,9 @@ function Loading() {
 export default Loading;
 
 const StyledWrapper = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 45%;
 
   .outer {
     height: 60px;
