@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
@@ -6,12 +6,12 @@ import CardList from '../molecules/CardList';
 import Title from '../molecules/Title';
 import MoreButton from '../atoms/MoreButton';
 
-function MainContent() {
+function MainList() {
   const { currentIdx } = useSelector(({ tab }) => tab);
   const { contents } = useSelector(({ data }) => data);
   const { sector } = useSelector(({ data }) => data);
-
   const sectorFilter = sector.filter((el) => el.id === currentIdx);
+  const [range, setRange] = useState(true);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,19 +21,19 @@ function MainContent() {
   if (!sectorFilter.length && !contents.length) {
     return <h1>로딩중</h1>;
   }
-
+  const contentsRange = contents.slice(0, range ? 6 : contents.length);
   return (
     <>
       <Title text={sectorFilter[0].title} tab={sectorFilter[0].type} />
       <StyledCardList className="card-list">
-        <CardList cardData={contents} />
+        <CardList cardData={contentsRange} />
       </StyledCardList>
-      <MoreButton />
+      <MoreButton range={range} setRange={setRange} />
     </>
   );
 }
 
-export default MainContent;
+export default MainList;
 
 const StyledCardList = styled.ul`
   display: grid;
@@ -41,12 +41,12 @@ const StyledCardList = styled.ul`
   grid-template-rows: auto;
   width: 100%;
   gap: 20px;
-  margin-top: 50px;
+  margin: 50px 0 30px;
   img {
     width: 100%;
   }
   .card-list {
-    margin-top: 30px;
+    margin: 30px 0;
   }
   .card {
     overflow: hidden;
@@ -63,5 +63,8 @@ const StyledCardList = styled.ul`
   }
   .card-footer {
     margin-top: 20px;
+  }
+  button {
+    margin-top: 30px;
   }
 `;
