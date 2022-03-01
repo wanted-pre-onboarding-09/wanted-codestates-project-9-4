@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'object-curly-newline': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'comma-dangle': 'off',
     semi: 'off',
@@ -31,7 +32,9 @@ module.exports = {
     ],
     'multiline-ternary': 'off',
     indent: 'off',
+    'linebreak-style': 0,
     'no-param-reassign': 'off',
     'no-shadow': 'off',
+    'consistent-return': 'off',
   },
 };

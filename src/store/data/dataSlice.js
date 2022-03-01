@@ -4,8 +4,9 @@ import { fetchDataByContentId, fetchDataBySectorId } from './dataAsyncThunk';
 const initialState = {
   loading: false,
   error: null,
-  sector: null,
-  contents: null,
+  sector: [],
+  contents: [],
+  pick: [],
 };
 
 const dataSlice = createSlice({
@@ -16,8 +17,8 @@ const dataSlice = createSlice({
     [fetchDataBySectorId.pending]: (state) => {
       state.loading = true;
       state.error = null;
-      state.sctor = null;
-      state.contents = null;
+      state.sctor = [];
+      state.contents = [];
     },
     [fetchDataBySectorId.fulfilled]: (state, action) => {
       state.loading = false;
@@ -47,5 +48,5 @@ const dataSlice = createSlice({
     },
   },
 });
-
+export const { onefilter } = dataSlice.actions;
 export default dataSlice.reducer;
