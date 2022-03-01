@@ -1,42 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import Main from '../atoms/Main';
-import Container from '../atoms/Container';
 import Slider from '../atoms/Slider';
+import Container from '../atoms/Container';
+import MainList from '../organisms/MainList';
 
-const HomeBox = styled.div`
-  margin: 0 auto;
-  padding-top: 2rem;
-  width: 100%;
+const HomeWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: #f7f7fb;
-`;
-
-const Carousel = styled.div`
-  width: 55rem;
-  height: 30rem;
-`;
-
-const CardBox = styled.div`
-  margin: 2rem 0;
-  width: 55rem;
+  justify-content: center;
+  padding: 60px 5rem 0;
 `;
 
 function Home() {
   return (
-    <HomeBox>
-      <Carousel>
-        <Slider />
-      </Carousel>
-      <CardBox>
-        <Main>
-          <Container />
-        </Main>
-      </CardBox>
-    </HomeBox>
+    <HomeWrap>
+      <Main>
+        <>
+          <Container>
+            <Slider />
+          </Container>
+          <Container>
+            <MainList />
+          </Container>
+        </>
+      </Main>
+    </HomeWrap>
   );
 }
 export default Home;
