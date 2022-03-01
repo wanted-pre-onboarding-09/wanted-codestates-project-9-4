@@ -25,20 +25,26 @@ const LikeCount = styled.div`
 // eslint-disable-next-line react/prop-types
 function Likes({ id, likeCnt }) {
   if (localStorage.getItem(id) === undefined) {
+    // localStorage에 값이 없는 경우에만 설정
     localStorage.setItem(id, likeCnt);
   }
 
-  const [isLikes, setIsLikes] = useState(false);
+  /* localStorage에 값이 있으면 기존 localStorage의 값을 가져온다 */
+  const [isLikes, setIsLikes] = useState(
+    localStorage.getItem(id) !== undefined,
+  );
   const [likesNumber, setLikesNumber] = useState(
     Number(localStorage.getItem(id)),
   );
 
   const LikeHandler = () => {
     if (!isLikes) {
+      /* 좋아요를 누르지 않은 경우 */
       setIsLikes(!isLikes);
       setLikesNumber(likesNumber + 1);
       localStorage.setItem(id, likesNumber + 1);
     } else {
+      /* 좋아요를 누른 경우 */
       setIsLikes(!isLikes);
       setLikesNumber(likesNumber - 1);
       localStorage.setItem(id, likesNumber - 1);

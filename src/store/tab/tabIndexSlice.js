@@ -4,22 +4,15 @@ const initialState = {
   currentIdx: 1,
 };
 
-const tabIndexSlice = createSlice({
+export const tabIndexSlice = createSlice({
   name: 'tabIndex',
   initialState,
-  reudcers: {
-    nextStep: (state) => ({
-      ...state,
-      currentIdx: state.currentIdx + 1,
-    }),
-    previousStep: (state) => ({
-      ...state,
-      currentIdx:
-        state.currentIdx > 1 ? state.currentIdx - 1 : state.currentIdx,
-    }),
-    clearStep: () => initialState,
+  reducers: {
+    changeSector: (state, action) => {
+      state.currentIdx = action.payload;
+    },
   },
-  extraReducers: {},
 });
 
+export const { changeSector } = tabIndexSlice.actions;
 export default tabIndexSlice.reducer;

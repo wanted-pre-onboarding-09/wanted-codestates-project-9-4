@@ -1,22 +1,21 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import LogoIcon from '../img/logo.svg';
+
+import { changeSector } from '../../store/tab/tabIndexSlice';
 
 const HeaderBox = styled.div`
   width: 100%;
   height: 4rem;
+  padding-left: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-`;
-
-const Logo = styled.a`
-  padding: 1rem;
-  text-decoration: none;
 `;
 
 const Icon = styled.img`
@@ -49,6 +48,7 @@ const ButtonBox = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 const Slider = styled.div`
   left: 0;
@@ -61,6 +61,7 @@ const Slider = styled.div`
 
 function Header() {
   const slider = useRef(null);
+  const dispatch = useDispatch();
   // const [bold, setBold] = useState(false);
   const tapChange = (event) => {
     const listArray = document.querySelectorAll('li');
@@ -70,22 +71,23 @@ function Header() {
     event.target.style.fontWeight = 'bold';
 
     slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
+
+    dispatch(changeSector(+event.target.dataset.sectorId));
   };
+
   return (
     <HeaderBox>
       <Link to="/">
-        <Logo>
-          <Icon alt="" src={LogoIcon} />
-        </Logo>
+        <Icon alt="" src={LogoIcon} />
       </Link>
       <StyleList>
-        <ButtonBox id="0" onClick={tapChange}>
-          유튜브
-        </ButtonBox>
-        <ButtonBox id="1" onClick={tapChange}>
+        <ButtonBox id="0" data-sector-id={1} onClick={tapChange}>
           알쓸B잡
         </ButtonBox>
-        <ButtonBox id="2" onClick={tapChange}>
+        <ButtonBox id="1" data-sector-id={2} onClick={tapChange}>
+          유튜브
+        </ButtonBox>
+        <ButtonBox id="2" data-sector-id={3} onClick={tapChange}>
           인사이트
         </ButtonBox>
         <Slider ref={slider}>{}</Slider>

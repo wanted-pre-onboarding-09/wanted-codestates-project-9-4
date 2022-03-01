@@ -9,7 +9,7 @@ const initialState = {
   pick: [],
 };
 
-const dataSlice = createSlice({
+export const dataSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {},

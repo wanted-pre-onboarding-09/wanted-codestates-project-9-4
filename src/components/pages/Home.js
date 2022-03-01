@@ -30,7 +30,8 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchDataBySectorId(currentIdx));
-  }, []);
+  }, [currentIdx]);
+
   return (
     <HomeWrap>
       <Main>
