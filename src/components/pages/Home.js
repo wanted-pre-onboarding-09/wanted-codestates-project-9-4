@@ -10,7 +10,7 @@ const HomeWrap = styled.div`
   display: flex;
   background: #f7f7fb;
   justify-content: center;
-  padding: 60px 5rem 0;
+  padding: 60px 5rem;
 `;
 
 function Home() {
