@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { number, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import CardImg from '../atoms/CardImg';
 import CardTitle from '../atoms/CardTitle';
 import CardDate from '../atoms/CardDate';
@@ -23,18 +23,19 @@ function CardList({ cardData }) {
 }
 
 export default CardList;
+
 CardList.propTypes = {
   cardData: PropTypes.arrayOf(
     PropTypes.shape({
-      body: null || string,
-      id: number,
-      image: string,
-      like_cnt: number,
-      like_top: number,
-      link: string,
-      sector_id: number,
-      title: string,
-      upload_date: string,
+      body: null || PropTypes.string,
+      id: PropTypes.number,
+      image: PropTypes.string,
+      like_cnt: PropTypes.number,
+      like_top: PropTypes.number,
+      link: PropTypes.string,
+      sector_id: PropTypes.number,
+      title: PropTypes.string,
+      upload_date: PropTypes.string,
     }),
   ).isRequired,
 };
