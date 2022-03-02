@@ -7,6 +7,9 @@ const DotList = styled.ul`
   justify-content: center;
   width: 100%;
   margin-top: 40px;
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 const DotItem = styled.li`
@@ -28,12 +31,20 @@ const DotBtn = styled.button`
 // `${({ theme }) => theme.colors.lightGray}`
 // background-color: ${({ theme }) => theme.colors.lightBlue};
 
-function SliderDots({ curIndex, contentsDatas }) {
+function SliderDots({ curIndex, contentsDatas, moveSlider }) {
+  const sliderDatas = contentsDatas.map((data, index) => ({
+    ...data,
+    index_id: index + 1,
+  }));
+
   return (
     <DotList>
-      {contentsDatas.map((data, index) => (
+      {sliderDatas.map((data) => (
         <DotItem key={data.id}>
-          <DotBtn active={curIndex === index + 1} />
+          <DotBtn
+            active={curIndex === data.index_id}
+            onClick={() => moveSlider(data.index_id)}
+          />
         </DotItem>
       ))}
     </DotList>
@@ -57,4 +68,5 @@ SliderDots.propTypes = {
     }),
   ).isRequired,
   curIndex: PropTypes.number.isRequired,
+  moveSlider: PropTypes.func.isRequired,
 };
