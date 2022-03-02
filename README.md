@@ -306,7 +306,6 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
       </div>
     );
   }
-  }
 ```
 
 ### 어려웠던 점
