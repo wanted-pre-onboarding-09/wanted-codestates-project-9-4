@@ -281,42 +281,42 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
 - 상세페이지의 경우 알쓸B잡, 유튜브, 인사이트 데이터에 따라 보여지는 데이터들이 달랐기 때문에 컴포넌트를 다르게 구현을 해야할지 고민하다 DetailContent 컴포넌트에서 조건에 따라 처리하였습니다.
 
 ```javascript
-<div className="detail-header">
-  <BackArrow />
-  <ContentHeader header={content.sector_id} />
-</div>;
-{
-  content.sector_id === 2 ? (
-    <div className="detail-youtube">
-      <ContentYoutube youtube={content.link} />
-    </div>
-  ) : (
-    <div className="detail-img">
-      <CardImg itemSrc={content.image} />
-    </div>
-  );
-}
-<div className="title-wrap">
-  <ContentTitle title={content.title} />
-</div>;
-{
-  content.sector_id === 1 ? null : (
-    <div className="detail-content">
-      <ContentBody body={content.body} />
-    </div>
-  );
-}
-<div className="like-share">
-  <Likes id={content.id} likeCnt={content.like_cnt} />
-  <Share url={content.link} />
-</div>;
-{
-  content.sector_id === 2 ? null : (
-    <div className="detail-move">
-      <ContentMove move={content.link} />
-    </div>
-  );
-}
+  <div className="detail-header">
+    <BackArrow />
+    <ContentHeader header={content.sector_id} />
+  </div>;
+  {
+    content.sector_id === 2 ? (
+      <div className="detail-youtube">
+        <ContentYoutube youtube={content.link} />
+      </div>
+    ) : (
+      <div className="detail-img">
+        <CardImg itemSrc={content.image} />
+      </div>
+    );
+  }
+  <div className="title-wrap">
+    <ContentTitle title={content.title} />
+  </div>;
+  {
+    content.sector_id === 1 ? null : (
+      <div className="detail-content">
+        <ContentBody body={content.body} />
+      </div>
+    );
+  }
+  <div className="like-share">
+    <Likes id={content.id} likeCnt={content.like_cnt} />
+    <Share url={content.link} />
+  </div>;
+  {
+    content.sector_id === 2 ? null : (
+      <div className="detail-move">
+        <ContentMove move={content.link} />
+      </div>
+    );
+  }
 ```
 
 ### 어려웠던 점
