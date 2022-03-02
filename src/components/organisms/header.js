@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LogoIcon from '../img/logo.svg';
+import LogoIcon from '../../assets/logo.svg';
 import { changeSector } from '../../store/tab/tabIndexSlice';
 import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
 
@@ -65,7 +65,7 @@ const StyledLink = styled(Link)`
 
 const ButtonBox = styled.li`
   padding: 1rem;
-  width: 8rem;
+  width: 6rem;
   height: 3.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 1rem;
@@ -75,21 +75,15 @@ const ButtonBox = styled.li`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
-    width: 6rem;
-  }
 `;
 
 const Slider = styled.div`
   left: 0;
   bottom: 0;
-  width: 8rem;
+  width: 6rem;
   border-bottom: 4px solid #5e72e4;
   position: absolute;
   transition: 0.3s;
-  @media screen and (max-width: 768px) {
-    width: 6rem;
-  }
 `;
 
 // eslint-disable-next-line react/prop-types
