@@ -3,26 +3,29 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LogoIcon from '../img/logo.svg';
-
 import { changeSector } from '../../store/tab/tabIndexSlice';
 import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
 
 const HeaderBox = styled.div`
   width: 100%;
-  height: 4rem;
-  padding-left: 1rem;
+  height: 3.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 768px) {
+    justify-content: space-around;
+  }
 `;
 
 const Icon = styled.img`
-  width: 12rem;
+  width: 10rem;
   height: 100%;
-  font-size: 1.5rem;
+  @media screen and (max-width: 768px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const StyleList = styled.ul`
@@ -31,7 +34,6 @@ const StyleList = styled.ul`
   justify-content: space-around;
   list-style: none;
   position: relative;
-
   li:first-child {
     font-weight: bold;
   }
@@ -64,17 +66,20 @@ const StyledLink = styled(Link)`
 const ButtonBox = styled.li`
   padding: 1rem;
   width: 8rem;
-  height: 4rem;
+  height: 3.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 1.2rem;
-  border-style: none;
+  font-size: 1rem;
   box-sizing: border-box;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
 `;
+
 const Slider = styled.div`
   left: 0;
   bottom: 0;
@@ -82,6 +87,9 @@ const Slider = styled.div`
   border-bottom: 4px solid #5e72e4;
   position: absolute;
   transition: 0.3s;
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -93,10 +101,11 @@ function Header() {
     const listArray = document.querySelectorAll('li');
     listArray.forEach((item) => {
       item.style.fontWeight = 'normal';
+      item.style.color = '#979797';
     });
     event.target.style.fontWeight = 'bold';
-
-    slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
+    event.target.style.color = '#000000';
+    slider.current.style.transform = `translateX(${event.target.id * 6}rem)`;
     dispatch(changeSector(event.target.dataset.sectorId));
     dispatch(fetchDataBySectorId(event.target.dataset.sectorId));
   };

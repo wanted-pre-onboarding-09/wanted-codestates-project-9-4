@@ -25,11 +25,17 @@ const SubScribeContainer = styled.section`
   height: 100px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
 `;
 
 const SubscribeDescription = styled.div`
-  margin-left: auto;
-  margin-right: 15rem;
+  display: flex;
+  flex-direction: column;
 
   .description__desc {
     margin: 0;
@@ -45,11 +51,10 @@ const SubscribeDescription = styled.div`
 
 const SubscribButton = styled.button`
   width: 100px;
-  height: 30px;
-  margin-right: auto;
   color: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.lightBlue};
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
+  padding: 0.8rem 0;
   cursor: pointer;
 `;

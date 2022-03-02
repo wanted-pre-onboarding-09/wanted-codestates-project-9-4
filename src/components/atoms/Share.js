@@ -34,7 +34,7 @@ const ShareContainer = styled.span`
 
   .share-title {
     color: #848484;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-left: 0.2rem;
     height: 100%;
     padding-top: 2px;

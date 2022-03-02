@@ -59,7 +59,7 @@ const StyledCardList = styled.ul`
   grid-template-rows: auto;
   width: 100%;
   gap: 20px;
-  margin: 50px 0 30px;
+  margin: 40px 0 30px;
   img {
     width: 100%;
   }
@@ -70,13 +70,22 @@ const StyledCardList = styled.ul`
     overflow: hidden;
     border: 1px solid #c4c4c4;
     border-radius: 10px;
+    @media screen and (max-width: 768px) {
+      border: none;
+    }
   }
   .card-main {
-    padding: 20px;
+    padding: 1.25rem;
+    @media screen and (max-width: 768px) {
+      padding: 0.5rem;
+    }
     p {
-      height: 50px;
+      height: 3.12rem;
       font-size: 1.1rem;
       font-weight: bold;
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
   }
   .card-footer {
@@ -85,6 +94,9 @@ const StyledCardList = styled.ul`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      margin-top: 0px;
+    }
   }
   button {
     margin-top: 30px;
@@ -95,5 +107,8 @@ const StyledCardList = styled.ul`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 20px 0 30px;
   }
 `;

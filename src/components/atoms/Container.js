@@ -15,7 +15,9 @@ export default Container;
 const StyledContainer = styled.section`
   width: 100%;
   max-width: 1200px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 40px;
+  padding: 2.5rem;
   border-radius: 20px;
+  @media screen and (max-width: 768px) {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  }
 `;
