@@ -7,19 +7,20 @@ import Share from './Share';
 function SliderInfo({ info }) {
   return (
     <InfoBox>
-      <LeftBox>
+      <InfoTitle>{info.title}</InfoTitle>
+      <RightBox>
         <Likes id={info.id} likeCnt={info.like_cnt} />
         <Share url={info.link} />
-      </LeftBox>
+      </RightBox>
     </InfoBox>
   );
 }
 
 export default SliderInfo;
-
 const InfoBox = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   width: 42.5rem;
   height: 6.25rem;
   background-color: #ffffff;
@@ -27,14 +28,18 @@ const InfoBox = styled.div`
   padding: 20px;
   @media screen and (max-width: 768px) {
     width: 24rem;
-    height: 4rem;
+    height: 5.8rem;
   }
 `;
 
-const LeftBox = styled.div`
+const InfoTitle = styled.p`
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
+const RightBox = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 10rem;
+  justify-content: flex-end;
 `;
 
 SliderInfo.propTypes = {
