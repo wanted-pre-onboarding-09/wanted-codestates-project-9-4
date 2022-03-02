@@ -105,8 +105,8 @@ function Slider({ contentsDatas }) {
           >
             <StyledLink to={`/detail/${data.id}`}>
               <Img src={data.image} alt="slide__img" />
-              <SliderInfo info={data} />
             </StyledLink>
+            <SliderInfo info={data} />
           </SliderItem>
         ))}
       </SliderBox>
