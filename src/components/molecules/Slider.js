@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import SliderButton from '../atoms/SliderButton';
 import SliderDots from '../atoms/SliderDots';
 import SliderInfo from '../atoms/SliderInfo';
@@ -115,11 +115,11 @@ function Slider({ contentsDatas }) {
         contentsDatas={contentsDatas}
         moveSlider={moveSlider}
       />
-      <SliderButton handleBtn={prevSlide} left="calc((100% - 850px)/2);">
-        <FiChevronLeft color="#000000" size="4rem" />
+      <SliderButton handleBtn={prevSlide} left="calc((100% - 1000px)/2);">
+        <BsChevronLeft color="#979797" size="3rem" />
       </SliderButton>
-      <SliderButton handleBtn={nextSlide} right="calc((100% - 850px)/2);">
-        <FiChevronRight color="#000000" size="4rem" />
+      <SliderButton handleBtn={nextSlide} right="calc((100% - 1000px)/2);">
+        <BsChevronRight color="#979797" size="3rem" />
       </SliderButton>
     </SliderContainer>
   );
