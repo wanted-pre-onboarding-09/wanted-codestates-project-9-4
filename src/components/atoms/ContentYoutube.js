@@ -8,6 +8,7 @@ function ContentYoutube({ youtube }) {
       width="100%"
       controls
       url={`https://www.youtube.com/watch?v=${youtube}`}
+      height="100vh"
     />
   );
 }
