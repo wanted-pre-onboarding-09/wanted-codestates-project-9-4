@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -34,9 +34,6 @@ const StyleList = styled.ul`
   justify-content: space-around;
   list-style: none;
   position: relative;
-  li:first-child {
-    font-weight: bold;
-  }
 `;
 
 const StyledLink = styled(Link)`
@@ -62,7 +59,7 @@ const StyledLink = styled(Link)`
 
 const ButtonBox = styled.li`
   padding: 1rem;
-  width: 6rem;
+  width: 8rem;
   height: 3.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 1rem;
@@ -72,31 +69,49 @@ const ButtonBox = styled.li`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
 `;
 
 const Slider = styled.div`
   left: 0;
   bottom: 0;
-  width: 6rem;
+  width: 8rem;
   border-bottom: 4px solid #5e72e4;
   position: absolute;
   transition: 0.3s;
+  @media screen and (max-width: 768px) {
+    width: 6rem;
+  }
 `;
 
 // eslint-disable-next-line react/prop-types
 function Header() {
   const slider = useRef(null);
   const dispatch = useDispatch();
-  // const [bold, setBold] = useState(false);
+
+  useEffect(() => {
+    document.querySelectorAll('.list').forEach((item) => {
+      item.style.fontWeight = 'normal';
+      item.style.color = '#979797';
+    });
+    document.querySelectorAll('.list')[0].style.fontWeight = 'bold';
+    document.querySelectorAll('.list')[0].style.color = '#000000';
+  }, []);
   const tapChange = (event) => {
-    const listArray = document.querySelectorAll('li');
+    const listArray = document.querySelectorAll('.list');
     listArray.forEach((item) => {
       item.style.fontWeight = 'normal';
       item.style.color = '#979797';
     });
     event.target.style.fontWeight = 'bold';
     event.target.style.color = '#000000';
-    slider.current.style.transform = `translateX(${event.target.id * 6}rem)`;
+    if (document.body.clientWidth > 768) {
+      slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
+    } else {
+      slider.current.style.transform = `translateX(${event.target.id * 6}rem)`;
+    }
     dispatch(changeSector(event.target.dataset.sectorId));
     dispatch(fetchDataBySectorId(event.target.dataset.sectorId));
   };
@@ -108,17 +123,32 @@ function Header() {
       </Link>
       <StyleList>
         <StyledLink to="/">
-          <ButtonBox id="0" data-sector-id={1} onClick={tapChange}>
+          <ButtonBox
+            className="list"
+            id="0"
+            data-sector-id={1}
+            onClick={tapChange}
+          >
             알쓸B잡
           </ButtonBox>
         </StyledLink>
         <StyledLink to="/">
-          <ButtonBox id="1" data-sector-id={2} onClick={tapChange}>
+          <ButtonBox
+            className="list"
+            id="1"
+            data-sector-id={2}
+            onClick={tapChange}
+          >
             유튜브
           </ButtonBox>
         </StyledLink>
         <StyledLink to="/">
-          <ButtonBox id="2" data-sector-id={3} onClick={tapChange}>
+          <ButtonBox
+            className="list"
+            id="2"
+            data-sector-id={3}
+            onClick={tapChange}
+          >
             인사이트
           </ButtonBox>
         </StyledLink>
