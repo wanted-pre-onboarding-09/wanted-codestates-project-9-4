@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -69,7 +70,6 @@ function Slider({ contentsDatas }) {
     } else {
       setImgWidth(24);
     }
-    console.log(imgWidth);
     slideRef.current.style.transform = `translate3d( -${
       slideIndex * imgWidth
     }rem, 0, 0)`;
@@ -82,12 +82,33 @@ function Slider({ contentsDatas }) {
     };
   }, [slideIndex, speed, nextSlide, resize, handleResize, imgWidth]);
 
+  let startX;
+  let endX;
+
+  const onTouchStart = (event) => {
+    startX = event.touches[0].pageX;
+  };
+  const onTouchEnd = (event) => {
+    endX = event.changedTouches[0].pageX;
+    if (startX > endX) {
+      nextSlide();
+    } else {
+      prevSlide();
+    }
+  };
   return (
     <SliderContainer>
       <SliderBox ref={slideRef} width={`${imgWidth * TOTAL_SLIDE}rem`}>
         {sliderDatas.map((data) => (
-          <SliderItem key={data.index_id}>
-            <Img src={data.image} alt="slide__img" />
+          <SliderItem
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            key={data.index_id}
+          >
+            <Link to={`/detail/${data.id}`}>
+              <Img src={data.image} alt="slide__img" />
+            </Link>
+
             <SliderInfo info={data} />
           </SliderItem>
         ))}
