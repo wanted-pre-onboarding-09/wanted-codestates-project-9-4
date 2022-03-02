@@ -6,7 +6,6 @@ const initialState = {
   error: null,
   sector: [],
   contents: [],
-  pick: [],
 };
 
 export const dataSlice = createSlice({
