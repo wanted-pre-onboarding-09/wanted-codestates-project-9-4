@@ -14,10 +14,13 @@ import Loading from '../atoms/Loading';
 const HomeWrap = styled.div`
   min-height: 100vh;
   height: auto;
+  padding: 0 2rem;
   display: flex;
   background: #f7f7fb;
   justify-content: center;
-  padding: 60px 5rem;
+  @media screen and (max-width: 768px) {
+    padding: 2rem;
+  }
 `;
 
 function Home() {

@@ -27,7 +27,7 @@ function Slider({ contentsDatas }) {
   const [slideIndex, setSlideIndex] = useState(1);
   const [speed, setSpeed] = useState(500);
   const [resize, setResize] = useState(window.innerWidth);
-  const [imgWidth, setImgWidth] = useState(null);
+  const [imgWidth, setImgWidth] = useState(42.5);
   const slideRef = useRef(null);
 
   const moveSlider = (index) => {
@@ -108,7 +108,6 @@ function Slider({ contentsDatas }) {
             <Link to={`/detail/${data.id}`}>
               <Img src={data.image} alt="slide__img" />
             </Link>
-
             <SliderInfo info={data} />
           </SliderItem>
         ))}
@@ -118,10 +117,10 @@ function Slider({ contentsDatas }) {
         contentsDatas={contentsDatas}
         moveSlider={moveSlider}
       />
-      <SliderButton handleBtn={prevSlide} left="calc((100% - 800px)/2);">
+      <SliderButton handleBtn={prevSlide} left="calc((100% - 850px)/2);">
         <BsChevronLeft color="#979797" size="2.5rem" />
       </SliderButton>
-      <SliderButton handleBtn={nextSlide} right="calc((100% - 800px)/2);">
+      <SliderButton handleBtn={nextSlide} right="calc((100% - 850px)/2);">
         <BsChevronRight color="#979797" size="2.5rem" />
       </SliderButton>
     </SliderContainer>
@@ -148,9 +147,10 @@ const SliderContainer = styled.div`
   width: 42.5rem;
   overflow: hidden;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 2.5rem;
   @media screen and (max-width: 768px) {
     width: 24rem;
+    margin-top: 20px;
   }
 `;
 
@@ -165,14 +165,15 @@ const SliderBox = styled.div`
 const SliderItem = styled.div`
   display: table;
   float: left;
+  padding: 0 1rem;
 `;
 
 const Img = styled.img`
-  width: 42.5rem;
+  width: 40.5rem;
   height: 23.75rem;
   border-radius: 14px;
   @media screen and (max-width: 768px) {
-    width: 24rem;
+    width: 22rem;
     height: 12rem;
   }
 `;

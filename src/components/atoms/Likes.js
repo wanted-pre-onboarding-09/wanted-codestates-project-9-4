@@ -44,7 +44,7 @@ const LikesImg = styled.span`
   position: relative;
   width: 100%;
   height: 100%;
-
+  cursor: pointer;
   > .heart-empty {
     position: absolute;
     z-index: 1;

@@ -17,24 +17,25 @@ function SliderInfo({ info }) {
 }
 
 export default SliderInfo;
+
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 42.5rem;
+  width: 40.5rem;
   height: 6.25rem;
   background-color: #ffffff;
   border-radius: 14px;
   padding: 20px;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 768px) {
-    width: 24rem;
-    height: 5.8rem;
+    width: 22rem;
   }
 `;
 
 const InfoTitle = styled.p`
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: bold;
 `;
 
 const RightBox = styled.div`

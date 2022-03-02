@@ -37,7 +37,6 @@ Title.defaultProps = {
 };
 
 const StyledTitle = styled.div`
-  padding-left: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,11 +44,14 @@ const StyledTitle = styled.div`
     font-size: 1.5rem;
   }
   div {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #fff;
-    padding: 5px 25px;
+    padding: 0.4rem 1rem;
     border-radius: 5px;
-    margin-left: 15px;
+    margin-left: 1rem;
     background-color: ${(props) => props.bgColor};
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
   }
 `;
