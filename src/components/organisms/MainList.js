@@ -85,21 +85,15 @@ const StyledCardList = styled.ul`
     margin-top: 20px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
   button {
     margin-top: 30px;
   }
   span {
-    line-height: 2rem;
-  }
-  .share-title {
-    color: #848484;
-    font-size: 0.8rem;
-    margin-left: 0.3rem;
   }
   .like-share {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
