@@ -71,8 +71,7 @@ function Header() {
     event.target.style.fontWeight = 'bold';
 
     slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
-
-    dispatch(changeSector(+event.target.dataset.sectorId));
+    dispatch(changeSector(event.target.dataset.sectorId));
   };
 
   return (

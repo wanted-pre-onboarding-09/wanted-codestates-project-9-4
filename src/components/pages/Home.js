@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Main from '../atoms/Main';
 import Container from '../atoms/Container';
 import MainList from '../organisms/MainList';
 import MainSlider from '../organisms/MainSlider';
 import Subscribe from '../molecules/Subscribe';
 import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
+
 import Loading from '../atoms/Loading';
 
 const HomeWrap = styled.div`
@@ -27,7 +29,7 @@ function Home() {
   }));
 
   const dispatch = useDispatch();
-  console.log(contents[0]);
+  // console.log(contents[0]);
 
   useEffect(() => {
     dispatch(fetchDataBySectorId(currentIdx));
@@ -57,4 +59,10 @@ function Home() {
     </HomeWrap>
   );
 }
+
+Home.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
+  currentIdx: PropTypes.number.isRequired,
+};
+
 export default Home;
