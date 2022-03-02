@@ -52,7 +52,6 @@ function Share({ url, sectorId }) {
   const ShareHandler = async () => {
     setClicked(true);
     setTimeout(() => {
-      // eslint-disable-next-line camelcase
       if (sectorId !== 2) {
         window.open(url, '_blank'); /* 2초 뒤에 새창 띄위기 */
       } else {

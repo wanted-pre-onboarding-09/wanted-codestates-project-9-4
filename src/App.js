@@ -5,10 +5,9 @@ import Detail from './components/pages/Detail';
 import Header from './components/organisms/header';
 import ScrollToTop from './components/molecules/ScrollTop';
 
-localStorage.clear(); /* efresh 일 경우 localStorage 모두 삭제 */
+localStorage.clear(); /* refresh 일 경우 localStorage 모두 삭제 */
 
 function App() {
-  // const [tabIdx, setTabIdx] = useState(1);
   return (
     <BrowserRouter>
       <ScrollToTop />

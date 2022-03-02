@@ -91,7 +91,6 @@ function Likes({ id, likeCnt }) {
   const LikeHandler = () => {
     if (!isLikes) {
       /* 좋아요를 누르지 않은 경우 */
-
       setIsLikes(!isLikes);
       setLikesNumber(likesNumber + 1);
       if (localStorage.getItem(id)) {

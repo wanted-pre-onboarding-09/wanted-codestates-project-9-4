@@ -12,7 +12,6 @@ import Likes from '../atoms/Likes';
 import Share from '../atoms/Share';
 
 function DetailList({ contents }) {
-  console.log(contents);
   return (
     <>
       {contents.map((content) => (
