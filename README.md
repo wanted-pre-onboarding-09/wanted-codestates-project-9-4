@@ -306,16 +306,6 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
       </div>
     );
   }
-  <div className="like-share">
-    <Likes id={content.id} likeCnt={content.like_cnt} />
-    <Share url={content.link} />
-  </div>;
-  {
-    content.sector_id === 2 ? null : (
-      <div className="detail-move">
-        <ContentMove move={content.link} />
-      </div>
-    );
   }
 ```
 
