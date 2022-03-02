@@ -15,9 +15,9 @@ function Detail() {
     contents: data.contents,
   }));
   useEffect(() => {
-    dispatch(fetchDataByContentId(id));
+    dispatch(fetchDataByContentId(+id));
   }, []);
-
+  console.log(typeof id);
   return (
     <DetailWrap>
       <Main>
@@ -89,6 +89,28 @@ const DetailWrap = styled.div`
           width: 100%;
           height: 100%;
         }
+      }
+    }
+    .like-share {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 1.5rem;
+      span:first-child {
+        margin-right: 10px;
+        div {
+          font-size: 1.5rem;
+        }
+      }
+      .share-img {
+        width: 1.7rem;
+      }
+      .heart-empty {
+        width: 1.5rem;
+        height: 100%;
+      }
+      .share-title {
+        margin-left: 5px;
+        font-size: 1.5rem;
       }
     }
   }
