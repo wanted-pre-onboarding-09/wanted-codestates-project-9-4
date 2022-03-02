@@ -9,7 +9,7 @@ localStorage.clear(); /* refresh 일 경우 localStorage 모두 삭제 */
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
       <ScrollToTop />
       <Header />
       <Routes>
