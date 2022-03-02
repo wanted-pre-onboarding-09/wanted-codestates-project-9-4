@@ -6,6 +6,7 @@
 
 - 샌드뱅크 모바일 앱 내 인포탭을 참고하여 웹으로 변환 제작
 - 기간: 22.02.27~22.03.02
+
 ## 배포링크
 
 [🚀💾 Demo Link ](https://wanted-pre-onboarding-09.github.io/wanted-codestates-project-9-4/)
@@ -46,6 +47,7 @@
 - 프론트엔드 서버는 localhost:8888 으로 설정해주시기 바랍니다.
 
 ## 작업일지
+
 ## 윤솔비
 
 ### **무한 캐러셀**
@@ -57,7 +59,7 @@
 - 무한 캐러셀을 위해 1을 복제해 마지막에 넣어주고 3을 복제해 첫 번째에 넣어준다.
 - 4번째의 3에서 다음을 클릭 시 1(다섯 번째)로 이동하고 0.5초 이후 원본인 첫 번째 1로 이동시켜 사용자가 눈치채지 못하게 바꾼다.
 - SliderContainer에는 `overflow: hidden;`을 넣어 넘치는 부분은 보여주지 않는다.
-- SliderBox에는 이미지 사이즈*개수값으로 넓이를 지정해 준다.
+- SliderBox에는 이미지 사이즈\*개수값으로 넓이를 지정해 준다.
 - SliderItem에는 `float:left;`로 왼쪽에 붙여준다.
 - 다음 버튼 클릭 시 `slideIndex`를 1씩 더해주고 500ms로 뒤로 한 칸 이동한다. 만약 현재 `slideIndex`가 마지막이라면 `slideIndex`를 4로 이동하고 0.5초 이후 0ms로 `slideIndex`를 1(첫 번째 이미지)로 이동한다.
 
@@ -91,39 +93,36 @@ cloneData = cloneData.map((data, index) => ({
 ### 무엇을 구현했나
 
 - 리덕스 스토어 전역 상태 관리
-    <img width="215" alt="스크린샷 2022-03-02 오후 9 15 40" src="https://user-images.githubusercontent.com/54147313/156383071-f68e3e6b-4eec-4511-a249-7a72855ed593.png">
+  <img width="215" alt="스크린샷 2022-03-02 오후 9 15 40" src="https://user-images.githubusercontent.com/54147313/156383071-f68e3e6b-4eec-4511-a249-7a72855ed593.png">
 
-    
-    - loading과 error 상태를 관리해 loading 컴포넌트와 error 핸들링 계획
-        - 로딩 컴포넌트는 적용했지만, error 핸들링은 시간 문제로 적용하지 못했다.
-    - sector: sector 데이터 관리를 위한 state
-    - contents: 각 sector_id를 참조해 해당 sector의 컨텐츠 관리를 위한 state
+  - loading과 error 상태를 관리해 loading 컴포넌트와 error 핸들링 계획
+    - 로딩 컴포넌트는 적용했지만, error 핸들링은 시간 문제로 적용하지 못했다.
+  - sector: sector 데이터 관리를 위한 state
+  - contents: 각 sector_id를 참조해 해당 sector의 컨텐츠 관리를 위한 state
+
 - 탭 인덱스 변화에 따라 데이터 호출
-    - 리듀서 함수의 동작으로 탭 변경 시 해당 탭의 dataset의 값으로 currentIdx를 초기화
-    - currentIdx가 변하면 해당 sector의 컨텐츠를 호출하도록 구현
-    
-    ```jsx
-    // 탭 인덱스를 변경하는 리듀서
-    changeSector: (state, action) => {
-          state.currentIdx = action.payload;
-    }
-    ```
-    
-    ```jsx
-    const { currentIdx } = useSelector(({ tab }) => tab);
-    const { loading, sector, contents } = useSelector(({ data }) => ({
-        loading: data.loading,
-        sector: data.sector,
-        contents: data.contents,
-    }));
-    
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-      dispatch(fetchDataBySectorId(currentIdx));
-    }, [currentIdx]);
-    ```
-    
+  - 리듀서 함수의 동작으로 탭 변경 시 해당 탭의 dataset의 값으로 currentIdx를 초기화
+  - currentIdx가 변하면 해당 sector의 컨텐츠를 호출하도록 구현
+  ```jsx
+  // 탭 인덱스를 변경하는 리듀서
+  changeSector: (state, action) => {
+    state.currentIdx = action.payload;
+  };
+  ```
+  ```jsx
+  const { currentIdx } = useSelector(({ tab }) => tab);
+  const { loading, sector, contents } = useSelector(({ data }) => ({
+    loading: data.loading,
+    sector: data.sector,
+    contents: data.contents,
+  }));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDataBySectorId(currentIdx));
+  }, [currentIdx]);
+  ```
 
 ### 무엇이 어려웠나
 
@@ -183,44 +182,64 @@ const StyledTitle = styled.div`
 # 조영제
 
 - Header Bar Tab 구현
-    - tab default 값 지정
-        - 에러 : 로딩 시 default 값으로 첫번째Tab에 bold 효과를 주려고 first-child를 사용했으나
-            
-            라우터 설정 과정에서 모든 li에 bold가 적용되게 되었음
-            
-        
-        `ul { li:first-child{ font-weight : bold; } }`
-        
-        - 해결 : useEffect를 사용해 스타일을 지정해서  해결할 수 있었음
-    - tab 아래 슬라이더 애니메이션 효과
-        - 어려웠던 점 styled component를 처음 사용해서 활용하는 방법을 잘 알지 못해 평소보다 더 시간을 씀
-        
-        ```jsx
-        const tapChange = (event) => {
-            const listArray = document.querySelectorAll('.list');
-            listArray.forEach((item) => {
-              item.style.fontWeight = 'normal';
-              item.style.color = '#979797';
-            });
-            event.target.style.fontWeight = 'bold';
-            event.target.style.color = '#000000';
-            if (document.body.clientWidth > 768) {
-              slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
-            } else {
-              slider.current.style.transform = `translateX(${event.target.id * 6}rem)`;
-            }
-            dispatch(changeSector(event.target.dataset.sectorId));
-            dispatch(fetchDataBySectorId(event.target.dataset.sectorId));
-          };
-        ```
-        
-        - 해결 : 라이브러리를 사용하지 않는것과 크게 다르지 않다는 걸 알고 적용할 수 있게 되었음
+  - tab default 값 지정
+    - 에러 : 로딩 시 default 값으로 첫번째Tab에 bold 효과를 주려고 first-child를 사용했으나
+      라우터 설정 과정에서 모든 li에 bold가 적용되게 되었음
+    `ul { li:first-child{ font-weight : bold; } }`
+    - 해결 : useEffect를 사용해 스타일을 지정해서 해결할 수 있었음
+  - tab 아래 슬라이더 애니메이션 효과
+    - 어려웠던 점 styled component를 처음 사용해서 활용하는 방법을 잘 알지 못해 평소보다 더 시간을 씀
+    ```jsx
+    const tapChange = (event) => {
+      const listArray = document.querySelectorAll('.list');
+      listArray.forEach((item) => {
+        item.style.fontWeight = 'normal';
+        item.style.color = '#979797';
+      });
+      event.target.style.fontWeight = 'bold';
+      event.target.style.color = '#000000';
+      if (document.body.clientWidth > 768) {
+        slider.current.style.transform = `translateX(${
+          event.target.id * 8
+        }rem)`;
+      } else {
+        slider.current.style.transform = `translateX(${
+          event.target.id * 6
+        }rem)`;
+      }
+      dispatch(changeSector(event.target.dataset.sectorId));
+      dispatch(fetchDataBySectorId(event.target.dataset.sectorId));
+    };
+    ```
+    - 해결 : 라이브러리를 사용하지 않는것과 크게 다르지 않다는 걸 알고 적용할 수 있게 되었음
 - router, styled component 라이브러리 사용
-    - 평소에 라이브러리를 사용하지 않아 이번 과제에서라도 해보고 싶었으나 예상했던대로
-        
-        활용하기 쉽지 않아 시간을 많이 허비했었습니다.
-        
-        그래도 이번 과제에서 사용하게 되면서 더 알아갈 수 있는 기회가 되었다고 생각합니다.
+  - 평소에 라이브러리를 사용하지 않아 이번 과제에서라도 해보고 싶었으나 예상했던대로
+    활용하기 쉽지 않아 시간을 많이 허비했었습니다.
+    그래도 이번 과제에서 사용하게 되면서 더 알아갈 수 있는 기회가 되었다고 생각합니다.
+
+## 유송현
+
+### 메인 리스트 페이지
+
+- sector id 값의 따라 필터링되는 api가 없기 때문에 store에 currentidx 값을 사용해 contents 리스트를 filter 메소드로 필터링 하여 구현하였습니다.
+- 메인 리스트 더보기 버튼 클릭시 css OverFlow 처리가 아닌 true/false 상태에 따른 배열에 slice로 첫 화면은 0 ~ 5 클릭시 contents의 길이 끝까지로 구현하였습니다
+
+```javascript
+const [range, setRange] = useState(true);
+const contentsRange = contents.slice(0, range ? 6 : contents.length);
+```
+
+### 상세 페이지
+
+- 상세페이지의 경우 알쓸B잡, 유튜브, 인사이트 데이터에 따라 보여지는 데이터들이 달랐기 때문에 컴포넌트를 다르게 구현을 해야할지 고민하다 DetailContent 컴포넌트에서 조건에 따라 처리하였습니다.
+
+### 어려웠던 점
+
+- 어려운 기능은 없었지만, 공용으로 사용되는 컴포넌트가 많았기 때문에 컴포넌트 단위를 어떻게 나눌것인지 고민이 많았습니다. 그래서 선택한 방법은 atomic 디자인 패턴이였습니다. 기능을 atoms => molecules => organism => pages 순으로 단위를 쪼깨어 개발하려고 노력했습니다. 재사용을 하기 위해선 배치 레이아웃이나 css는 pages에서 처리하였으며, 데이터 또한 page를 기준으로 stroe에 접근하여 내려주었습니다. 개발 하면서도 컴포넌트 어떻게 구성해야 정답일지 고민이 많이 드는 프로젝트였습니다.
+
+### 아쉬웠던 점
+
+- 과제 제출 5시간정도는 애니메이션, 네트워크 처리, 비정상적 접근 등 UI/UX를 향상 시키려고 했지만, 배포를 하다 발생한 CORS 처리에 시간이 너무 많이 들어 계획되로 흘러가지 않은게 아쉬웠습니다.
 
 ## 동작 화면
 
