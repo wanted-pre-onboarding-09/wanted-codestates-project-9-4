@@ -95,7 +95,6 @@ const onTouchEnd = (event) => {
 - 터치가 시작한 지점의 X좌표(StartX)와 터치가 끝난 지점의 X좌표(endX)를 비교하여 startX 가 큰 경우 `nextSlide()` 메소드가 시행되고 EndX가 큰 경우에는 `preSlide()` 메소드가 시행된다.
 - 만약 사용자가 오른쪽에서 왼쪽으로 터치하여 스와이프하는 경우 터치 시작 지점의 X좌표가 터치가 끝난 지점의 X좌표보다 크기 때문에 `nextSlide()` 가 시행되어 다음 슬라이드로 넘어간다.
 
-
 **어려웠던 점**
 
 - 무한 캐러셀을 만들기 위해 첫 번째 이미지와 마지막 이미지를 복제해서 넣어줬다. 이 복제한 데이터들과 함께 `map` 함수로 돌리니 복제한 데이터는 값이 똑같아서 unique key 값이 필요했다.
@@ -124,14 +123,17 @@ cloneData = cloneData.map((data, index) => ({
   - contents: 각 sector_id를 참조해 해당 sector의 컨텐츠 관리를 위한 state
 
 - 탭 인덱스 변화에 따라 데이터 호출
+
   - 리듀서 함수의 동작으로 탭 변경 시 해당 탭의 dataset의 값으로 currentIdx를 초기화
   - currentIdx가 변하면 해당 sector의 컨텐츠를 호출하도록 구현
+
   ```jsx
   // 탭 인덱스를 변경하는 리듀서
   changeSector: (state, action) => {
     state.currentIdx = action.payload;
   };
   ```
+
   ```jsx
   const { currentIdx } = useSelector(({ tab }) => tab);
   const { loading, sector, contents } = useSelector(({ data }) => ({
@@ -176,7 +178,6 @@ const onTouchEnd = (event) => {
 - 넘겨질 각 슬라이드 컴포넌트 (`SlideItem`)에 `OnTouchStart , onTouchEnd` 이벤트 핸들러를 등록하여 사용자의 터치 움직임을 감지한다.
 - 터치가 시작한 지점의 X좌표(StartX)와 터치가 끝난 지점의 X좌표(endX)를 비교하여 startX 가 큰 경우 `nextSlide()` 메소드가 시행되고 EndX가 큰 경우에는 `preSlide()` 메소드가 시행된다.
 - 만약 사용자가 오른쪽에서 왼쪽으로 터치하여 스와이프하는 경우 터치 시작 지점의 X좌표가 터치가 끝난 지점의 X좌표보다 크기 때문에 `nextSlide()` 가 시행되어 다음 슬라이드로 넘어간다.
-
 
 ### 어려웠던 점
 
@@ -231,7 +232,7 @@ const StyledTitle = styled.div`
   - tab default 값 지정
     - 에러 : 로딩 시 default 값으로 첫번째Tab에 bold 효과를 주려고 first-child를 사용했으나
       라우터 설정 과정에서 모든 li에 bold가 적용되게 되었음
-    `ul { li:first-child{ font-weight : bold; } }`
+      `ul { li:first-child{ font-weight : bold; } }`
     - 해결 : useEffect를 사용해 스타일을 지정해서 해결할 수 있었음
   - tab 아래 슬라이더 애니메이션 효과
     - 어려웠던 점 styled component를 처음 사용해서 활용하는 방법을 잘 알지 못해 평소보다 더 시간을 씀
@@ -279,6 +280,45 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
 
 - 상세페이지의 경우 알쓸B잡, 유튜브, 인사이트 데이터에 따라 보여지는 데이터들이 달랐기 때문에 컴포넌트를 다르게 구현을 해야할지 고민하다 DetailContent 컴포넌트에서 조건에 따라 처리하였습니다.
 
+```javascript
+<div className="detail-header">
+  <BackArrow />
+  <ContentHeader header={content.sector_id} />
+</div>;
+{
+  content.sector_id === 2 ? (
+    <div className="detail-youtube">
+      <ContentYoutube youtube={content.link} />
+    </div>
+  ) : (
+    <div className="detail-img">
+      <CardImg itemSrc={content.image} />
+    </div>
+  );
+}
+<div className="title-wrap">
+  <ContentTitle title={content.title} />
+</div>;
+{
+  content.sector_id === 1 ? null : (
+    <div className="detail-content">
+      <ContentBody body={content.body} />
+    </div>
+  );
+}
+<div className="like-share">
+  <Likes id={content.id} likeCnt={content.like_cnt} />
+  <Share url={content.link} />
+</div>;
+{
+  content.sector_id === 2 ? null : (
+    <div className="detail-move">
+      <ContentMove move={content.link} />
+    </div>
+  );
+}
+```
+
 ### 어려웠던 점
 
 - 어려운 기능은 없었지만, 공용으로 사용되는 컴포넌트가 많았기 때문에 컴포넌트 단위를 어떻게 나눌것인지 고민이 많았습니다. 그래서 선택한 방법은 atomic 디자인 패턴이였습니다. 기능을 atoms => molecules => organism => pages 순으로 단위를 쪼깨어 개발하려고 노력했습니다. 재사용을 하기 위해선 배치 레이아웃이나 css는 pages에서 처리하였으며, 데이터 또한 page를 기준으로 stroe에 접근하여 내려주었습니다. 개발 하면서도 컴포넌트 어떻게 구성해야 정답일지 고민이 많이 드는 프로젝트였습니다.
@@ -292,7 +332,6 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
 <img width="725" src=https://user-images.githubusercontent.com/84840032/156377199-37dc67ac-3648-4d2c-b91b-8cfd2c8b56a5.gif>  
 <img width="725" src=https://user-images.githubusercontent.com/84840032/156377760-c657533f-d9e4-4553-ad49-e3c77fa1ef21.gif>
 <img width="725" src=https://user-images.githubusercontent.com/84840032/156378032-52c7e1d6-00b5-4cb6-9231-0cd4e12e0d5b.gif>
-
 
 ## 관심사 분리
 
