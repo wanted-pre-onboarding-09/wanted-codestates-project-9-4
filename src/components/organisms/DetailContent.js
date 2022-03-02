@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import CardImg from '../atoms/CardImg';
 import ContentTitle from '../atoms/ContentTitle';
@@ -11,7 +10,7 @@ import BackArrow from '../atoms/BackArrow';
 import Likes from '../atoms/Likes';
 import Share from '../atoms/Share';
 
-function DetailList({ contents }) {
+function DetailContent({ contents }) {
   return (
     <>
       {contents.map((content) => (
@@ -52,7 +51,7 @@ function DetailList({ contents }) {
   );
 }
 
-DetailList.propTypes = {
+DetailContent.propTypes = {
   contents: PropTypes.arrayOf(
     PropTypes.shape({
       body: null || PropTypes.string,
@@ -68,4 +67,4 @@ DetailList.propTypes = {
   ).isRequired,
 };
 
-export default DetailList;
+export default DetailContent;

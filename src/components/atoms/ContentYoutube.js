@@ -4,7 +4,11 @@ import ReactPlayer from 'react-player/youtube';
 
 function ContentYoutube({ youtube }) {
   return (
-    <ReactPlayer width="100%" controls="true" url={`youtu.be/${youtube}`} />
+    <ReactPlayer
+      width="100%"
+      controls
+      url={`https://www.youtube.com/watch?v=${youtube}`}
+    />
   );
 }
 
