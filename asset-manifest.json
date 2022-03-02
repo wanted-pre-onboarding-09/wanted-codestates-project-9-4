@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/wanted-codestates-project-9-4/static/js/main.f39a8f7e.js",
+    "main.js": "/wanted-codestates-project-9-4/static/js/main.6eecd4b4.js",
     "static/media/logo.svg": "/wanted-codestates-project-9-4/static/media/logo.5c38c279b9e2ca2a9cb5d2bc4c569f05.svg",
     "index.html": "/wanted-codestates-project-9-4/index.html",
-    "main.f39a8f7e.js.map": "/wanted-codestates-project-9-4/static/js/main.f39a8f7e.js.map"
+    "main.6eecd4b4.js.map": "/wanted-codestates-project-9-4/static/js/main.6eecd4b4.js.map"
   },
   "entrypoints": [
-    "static/js/main.f39a8f7e.js"
+    "static/js/main.6eecd4b4.js"
   ]
 }
