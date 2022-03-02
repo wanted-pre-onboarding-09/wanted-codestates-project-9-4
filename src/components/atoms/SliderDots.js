@@ -9,7 +9,7 @@ const DotList = styled.ul`
   margin-top: 2.5rem;
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
-    margin-top: 5rem;
+    margin-right: 0.6rem;
   }
 `;
 

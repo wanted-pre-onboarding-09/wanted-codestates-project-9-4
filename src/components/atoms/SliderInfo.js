@@ -23,13 +23,14 @@ const InfoBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 40.5rem;
-  height: 6.25rem;
+  height: 7.1rem;
   background-color: #ffffff;
   border-radius: 14px;
   padding: 20px;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 768px) {
     width: 22rem;
+    height: 9rem;
   }
 `;
 
@@ -41,6 +42,7 @@ const InfoTitle = styled.p`
 const RightBox = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-top: 0.5rem;
 `;
 
 SliderInfo.propTypes = {

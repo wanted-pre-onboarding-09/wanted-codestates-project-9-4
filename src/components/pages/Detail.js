@@ -38,7 +38,8 @@ const DetailWrap = styled.div`
   main {
     .title-wrap {
       margin: 40px 0;
-      background-color: gray;
+      box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 14px;
       padding: 20px 10px;
       text-align: center;
       font-size: 1.4rem;
