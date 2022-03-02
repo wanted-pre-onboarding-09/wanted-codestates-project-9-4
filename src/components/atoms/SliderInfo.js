@@ -17,7 +17,6 @@ function SliderInfo({ info }) {
 }
 
 export default SliderInfo;
-
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
