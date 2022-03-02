@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import LogoIcon from '../img/logo.svg';
 
 import { changeSector } from '../../store/tab/tabIndexSlice';
+import { fetchDataBySectorId } from '../../store/data/dataAsyncThunk';
 
 const HeaderBox = styled.div`
   width: 100%;
@@ -36,6 +37,30 @@ const StyleList = styled.ul`
   }
 `;
 
+const StyledLink = styled(Link)`
+  &:link {
+    //아직 방문하지 않은
+    color: black;
+    text-decoration: none;
+  }
+
+  &:visited {
+    //사용자가 방문한적이 있는
+    color: black;
+    text-decoration: none;
+  }
+
+  &:hover {
+    //마우스를 링크에 올려두었을 때
+    color: black;
+  }
+
+  &:active {
+    //클릭 후 뗄 떼까지
+    color: black;
+  }
+`;
+
 const ButtonBox = styled.li`
   padding: 1rem;
   width: 8rem;
@@ -59,6 +84,7 @@ const Slider = styled.div`
   transition: 0.3s;
 `;
 
+// eslint-disable-next-line react/prop-types
 function Header() {
   const slider = useRef(null);
   const dispatch = useDispatch();
@@ -72,6 +98,7 @@ function Header() {
 
     slider.current.style.transform = `translateX(${event.target.id * 8}rem)`;
     dispatch(changeSector(event.target.dataset.sectorId));
+    dispatch(fetchDataBySectorId(event.target.dataset.sectorId));
   };
 
   return (
@@ -80,15 +107,21 @@ function Header() {
         <Icon alt="" src={LogoIcon} />
       </Link>
       <StyleList>
-        <ButtonBox id="0" data-sector-id={1} onClick={tapChange}>
-          알쓸B잡
-        </ButtonBox>
-        <ButtonBox id="1" data-sector-id={2} onClick={tapChange}>
-          유튜브
-        </ButtonBox>
-        <ButtonBox id="2" data-sector-id={3} onClick={tapChange}>
-          인사이트
-        </ButtonBox>
+        <StyledLink to="/">
+          <ButtonBox id="0" data-sector-id={1} onClick={tapChange}>
+            알쓸B잡
+          </ButtonBox>
+        </StyledLink>
+        <StyledLink to="/">
+          <ButtonBox id="1" data-sector-id={2} onClick={tapChange}>
+            유튜브
+          </ButtonBox>
+        </StyledLink>
+        <StyledLink to="/">
+          <ButtonBox id="2" data-sector-id={3} onClick={tapChange}>
+            인사이트
+          </ButtonBox>
+        </StyledLink>
         <Slider ref={slider}>{}</Slider>
       </StyleList>
     </HeaderBox>
