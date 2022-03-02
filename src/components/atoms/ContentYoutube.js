@@ -6,9 +6,9 @@ function ContentYoutube({ youtube }) {
   return (
     <ReactPlayer
       width="100%"
+      controls
+      url={`https://www.youtube.com/watch?v=${youtube}`}
       height="100vh"
-      controls="true"
-      url={`youtu.be/${youtube}`}
     />
   );
 }

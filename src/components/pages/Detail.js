@@ -17,7 +17,6 @@ function Detail() {
   useEffect(() => {
     dispatch(fetchDataByContentId(+id));
   }, []);
-  console.log(typeof id);
   return (
     <DetailWrap>
       <Main>

@@ -6,8 +6,6 @@ import Title from '../molecules/Title';
 import MoreButton from '../atoms/MoreButton';
 
 function MainList({ sector, contents, currentIdx }) {
-  // function MainContent({ sector, contents, currentIdx }) {
-
   const sectorFilter = sector.filter((el) => el.id === currentIdx);
   const [range, setRange] = useState(true);
   const contentsRange = contents.slice(0, range ? 6 : contents.length);
