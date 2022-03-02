@@ -73,6 +73,29 @@
 
 - `resize`를 통해 브라우저 사이즈 변경 시 이미지 넓이 동적으로 변경한다.
 
+### 터치 스와이프
+
+```
+let startX;
+let endX;
+const onTouchStart = (event) => {
+  startX = event.touches[0].pageX;
+};
+const onTouchEnd = (event) => {
+  endX = event.changedTouches[0].pageX;
+  if (startX > endX) {
+    nextSlide();
+  } else {
+    prevSlide();
+  }
+};
+```
+
+- 넘겨질 각 슬라이드 컴포넌트 (`SlideItem`)에 `OnTouchStart , onTouchEnd` 이벤트 핸들러를 등록하여 사용자의 터치 움직임을 감지한다.
+- 터치가 시작한 지점의 X좌표(StartX)와 터치가 끝난 지점의 X좌표(endX)를 비교하여 startX 가 큰 경우 `nextSlide()` 메소드가 시행되고 EndX가 큰 경우에는 `preSlide()` 메소드가 시행된다.
+- 만약 사용자가 오른쪽에서 왼쪽으로 터치하여 스와이프하는 경우 터치 시작 지점의 X좌표가 터치가 끝난 지점의 X좌표보다 크기 때문에 `nextSlide()` 가 시행되어 다음 슬라이드로 넘어간다.
+
+
 **어려웠던 점**
 
 - 무한 캐러셀을 만들기 위해 첫 번째 이미지와 마지막 이미지를 복제해서 넣어줬다. 이 복제한 데이터들과 함께 `map` 함수로 돌리니 복제한 데이터는 값이 똑같아서 unique key 값이 필요했다.
@@ -131,6 +154,29 @@ cloneData = cloneData.map((data, index) => ({
 - 글을 통해서 어렴풋이 이해하고 있던 지식을 처음 적용하는 과정이 이번 과제를 진행하면서 가장 큰 도전이었고, 팀원분들과의 협업으로 혼자 고민했을 때보다 수월하게 마무리 할 수 있었다.
 
 ## 이지수
+
+### 터치 스와이프
+
+```
+let startX;
+let endX;
+const onTouchStart = (event) => {
+  startX = event.touches[0].pageX;
+};
+const onTouchEnd = (event) => {
+  endX = event.changedTouches[0].pageX;
+  if (startX > endX) {
+    nextSlide();
+  } else {
+    prevSlide();
+  }
+};
+```
+
+- 넘겨질 각 슬라이드 컴포넌트 (`SlideItem`)에 `OnTouchStart , onTouchEnd` 이벤트 핸들러를 등록하여 사용자의 터치 움직임을 감지한다.
+- 터치가 시작한 지점의 X좌표(StartX)와 터치가 끝난 지점의 X좌표(endX)를 비교하여 startX 가 큰 경우 `nextSlide()` 메소드가 시행되고 EndX가 큰 경우에는 `preSlide()` 메소드가 시행된다.
+- 만약 사용자가 오른쪽에서 왼쪽으로 터치하여 스와이프하는 경우 터치 시작 지점의 X좌표가 터치가 끝난 지점의 X좌표보다 크기 때문에 `nextSlide()` 가 시행되어 다음 슬라이드로 넘어간다.
+
 
 ### 어려웠던 점
 
@@ -247,52 +293,6 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
 <img width="725" src=https://user-images.githubusercontent.com/84840032/156377760-c657533f-d9e4-4553-ad49-e3c77fa1ef21.gif>
 <img width="725" src=https://user-images.githubusercontent.com/84840032/156378032-52c7e1d6-00b5-4cb6-9231-0cd4e12e0d5b.gif>
 
-## 기능 구현
-
-### 무한 캐러셀
-
-<img width="725" alt="스크린샷 2022-03-02 오후 6 43 18" src="https://user-images.githubusercontent.com/97160021/156346291-7cb98384-b1b7-4499-a9c9-6f3a3cfa73f2.png">
-
-#### 구현 방식
-
-- 무한 캐러셀을 위해 1을 복제해 마지막에 넣어주고 3을 복제해 첫 번째에 넣어준다.
-- 4번째의 3에서 다음을 클릭 시 1(다섯 번쨰)로 이동하고 0.5초 이후 원본인 첫 번째 1로 이동시켜 사용자가 눈치채지 못하게 바꾼다.
-- SliderContainer에는 overflow: hidden;을 넣어 넘치는 부분은 보여주지 않는다.
-- SliderBox에는 이미지 사이즈\*개수값으로 넓이를 지정해 준다.
-- SliderItem에는 float:left;로 왼쪽에 붙여준다.
-- 다음 버튼 클릭 시 slideIndex를 1씩 더해주고 500ms로 뒤로 한 칸 이동한다. 만약 현재 slideIndex가 마지막이라면 slideIndex를 4로 이동하고 0.5초 이후 0ms로 slideIndex를 1(첫 번째 이미지)로 이동한다.
-
-#### 5초 뒤 자동 슬라이드
-
-- setInterval 함수 안에 nextSlide를 넣어 5초마다 이동하게 한다.
-
-#### 반응형을 위해 width값 동적으로 변경
-
-window.addEventListener('resize', handleResize);
-
-- resize를 통해 브라우저 사이즈 변경 시 이미지 넓이 동적으로 변경한다.
-
-## 터치 스와이프
-
-```
-let startX;
-let endX;
-const onTouchStart = (event) => {
-  startX = event.touches[0].pageX;
-};
-const onTouchEnd = (event) => {
-  endX = event.changedTouches[0].pageX;
-  if (startX > endX) {
-    nextSlide();
-  } else {
-    prevSlide();
-  }
-};
-```
-
-- 넘겨질 각 슬라이드 컴포넌트 (`SlideItem`)에 `OnTouchStart , onTouchEnd` 이벤트 핸들러를 등록하여 사용자의 터치 움직임을 감지한다.
-- 터치가 시작한 지점의 X좌표(StartX)와 터치가 끝난 지점의 X좌표(endX)를 비교하여 startX 가 큰 경우 `nextSlide()` 메소드가 시행되고 EndX가 큰 경우에는 `preSlide()` 메소드가 시행된다.
-- 만약 사용자가 오른쪽에서 왼쪽으로 터치하여 스와이프하는 경우 터치 시작 지점의 X좌표가 터치가 끝난 지점의 X좌표보다 크기 때문에 `nextSlide()` 가 시행되어 다음 슬라이드로 넘어간다.
 
 ## 관심사 분리
 
