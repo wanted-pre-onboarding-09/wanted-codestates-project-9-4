@@ -32,7 +32,7 @@ const StyledTitle = styled.div`
   div {
     font-size: 1.5rem;
     color: #fff;
-    background-color: #8bdb81;
+    background-color: #669cff;
     padding: 5px 25px;
     border-radius: 5px;
     margin-left: 15px;
