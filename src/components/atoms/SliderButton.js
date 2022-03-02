@@ -35,7 +35,7 @@ const StyledSliderButton = styled.button`
   border: none;
   background-color: transparent;
   position: absolute;
-  top: 350px;
+  top: 300px;
   left: ${(props) => props.left && props.left};
   right: ${(props) => props.right && props.right};
   @media only screen and (max-width: 977px) {

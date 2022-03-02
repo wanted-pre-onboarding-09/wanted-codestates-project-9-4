@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import SliderButton from '../atoms/SliderButton';
 import SliderDots from '../atoms/SliderDots';
 import SliderInfo from '../atoms/SliderInfo';
@@ -20,8 +20,6 @@ function Slider({ contentsDatas }) {
     }));
     setSliderDatas(cloneData);
   }, [contentsDatas]);
-
-  // const IMG_WIDTH = 42.5;
   const TOTAL_SLIDE = sliderDatas.length;
 
   const [slideIndex, setSlideIndex] = useState(1);
@@ -98,17 +96,17 @@ function Slider({ contentsDatas }) {
   };
   return (
     <SliderContainer>
-      <SliderBox ref={slideRef} width={`${imgWidth * TOTAL_SLIDE}rem`}>
+      <SliderBox ref={slideRef}>
         {sliderDatas.map((data) => (
           <SliderItem
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
             key={data.index_id}
           >
-            <Link to={`/detail/${data.id}`}>
+            <StyledLink to={`/detail/${data.id}`}>
               <Img src={data.image} alt="slide__img" />
-            </Link>
-            <SliderInfo info={data} />
+              <SliderInfo info={data} />
+            </StyledLink>
           </SliderItem>
         ))}
       </SliderBox>
@@ -118,10 +116,10 @@ function Slider({ contentsDatas }) {
         moveSlider={moveSlider}
       />
       <SliderButton handleBtn={prevSlide} left="calc((100% - 850px)/2);">
-        <BsChevronLeft color="#979797" size="2.5rem" />
+        <FiChevronLeft color="#000000" size="4rem" />
       </SliderButton>
       <SliderButton handleBtn={nextSlide} right="calc((100% - 850px)/2);">
-        <BsChevronRight color="#979797" size="2.5rem" />
+        <FiChevronRight color="#000000" size="4rem" />
       </SliderButton>
     </SliderContainer>
   );
@@ -143,6 +141,9 @@ Slider.propTypes = {
   ).isRequired,
 };
 
+const StyledLink = styled(Link)`
+  color: black;
+`;
 const SliderContainer = styled.div`
   width: 42.5rem;
   overflow: hidden;
@@ -155,10 +156,10 @@ const SliderContainer = styled.div`
 `;
 
 const SliderBox = styled.div`
-  width: ${(props) => props.width};
-  height: 30rem;
+  width: 212.5rem;
+  height: 27.4rem;
   @media screen and (max-width: 768px) {
-    height: 16.2rem;
+    height: 21.4rem;
   }
 `;
 
@@ -170,7 +171,7 @@ const SliderItem = styled.div`
 
 const Img = styled.img`
   width: 40.5rem;
-  height: 23.75rem;
+  height: 20rem;
   border-radius: 14px;
   @media screen and (max-width: 768px) {
     width: 22rem;
