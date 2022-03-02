@@ -10,6 +10,7 @@ import ContentMove from '../atoms/ContentMove';
 import BackArrow from '../atoms/BackArrow';
 
 function DetailList({ contents }) {
+  console.log(contents);
   return (
     <>
       {contents.map((content) => (

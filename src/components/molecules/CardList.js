@@ -21,7 +21,7 @@ function CardList({ cardData }) {
               <CardDate itemDate={card.upload_date} />
               <div className="like-share">
                 <Likes id={card.id} likeCnt={card.like_cnt} />
-                <Share url={card.link} />
+                <Share url={card.link} sectorId={card.sector_id} />
               </div>
             </div>
           </div>
