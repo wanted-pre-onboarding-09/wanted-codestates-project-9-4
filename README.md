@@ -296,7 +296,7 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
       </div>
     );
   }
-  <div className="title-wrap">
+  <div className="detail-title">
     <ContentTitle title={content.title} />
   </div>;
   {
