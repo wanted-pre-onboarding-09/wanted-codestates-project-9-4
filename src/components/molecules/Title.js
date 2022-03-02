@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import theme from '../../styles/theme';
 
 function Title({ text, tab }) {
   function getColor(tab) {
     switch (tab) {
       case 'News':
-        return '#6691ff';
+        return theme.colors.lightBlue;
       case 'Youtube':
-        return '#c4302b';
+        return theme.colors.red;
       case 'Report':
-        return '#9695D7';
+        return theme.colors.puple;
       case 'NEW':
-        return '#8bdb81';
+        return theme.colors.green;
       default:
         throw new Error(`unknown :${tab}`);
     }
