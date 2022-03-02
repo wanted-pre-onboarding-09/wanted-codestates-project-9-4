@@ -6,10 +6,10 @@ const DotList = styled.ul`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2.5rem;
+  margin-top: 3.5rem;
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
-    margin-top: 5rem;
+    margin: 2.5rem 0 0 0.6rem;
   }
 `;
 
