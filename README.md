@@ -2,12 +2,15 @@
 
 # Daground
 
-## 1. 프로젝트 소개
+## 프로젝트 소개
 
 - 샌드뱅크 모바일 앱 내 인포탭을 참고하여 웹으로 변환 제작
 - 기간: 22.02.27~22.03.02
+## 배포링크
 
-## 2. 팀원 소개
+[🚀💾 Demo Link ](https://wanted-pre-onboarding-09.github.io/wanted-codestates-project-9-4/)
+
+## 팀원 소개
 
 |  이름  |    Role     |
 | :----: | :---------: |
@@ -18,7 +21,7 @@
 | 이지수 | Team member |
 | 조영제 | Team member |
 
-## 3. 기술 스택
+## 기술 스택
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -114,7 +117,7 @@ const onTouchEnd = (event) => {
 - Mac/Linux: `package.json`파일에 scripts 부분에 `"start": "export PORT=8888 && react-scripts start",` 추가
 - Windows: `package.json`파일에 scripts 부분에 `"start": "set PORT=8888 && react-scripts start",` 추가
 
-## 4. 디렉터리 구조
+## 디렉터리 구조
 
 ```bash
 ─src
@@ -188,13 +191,13 @@ const onTouchEnd = (event) => {
             theme.js
 ```
 
-## 5. 실행 방법
+## 실행 방법
 
 ```
 npm start
 ```
 
-## 6. 커밋 컨벤션
+## 커밋 컨벤션
 
 |          | 사용 예시        |
 | -------- | ---------------- |
