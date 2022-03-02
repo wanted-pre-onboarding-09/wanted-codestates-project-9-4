@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Main from '../atoms/Main';
 import Container from '../atoms/Container';
 import MainList from '../organisms/MainList';
@@ -29,7 +28,6 @@ function Home() {
   }));
 
   const dispatch = useDispatch();
-  // console.log(contents[0]);
 
   useEffect(() => {
     dispatch(fetchDataBySectorId(currentIdx));
@@ -50,7 +48,7 @@ function Home() {
               <MainList
                 sector={sector}
                 contents={contents}
-                currentIdx={currentIdx}
+                currentIdx={+currentIdx}
               />
             </Container>
           </>
@@ -59,10 +57,5 @@ function Home() {
     </HomeWrap>
   );
 }
-
-Home.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  currentIdx: PropTypes.number.isRequired,
-};
 
 export default Home;
