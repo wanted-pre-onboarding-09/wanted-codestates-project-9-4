@@ -3,8 +3,23 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function Title({ text, tab }) {
+  function getColor(tab) {
+    switch (tab) {
+      case 'News':
+        return '#6691ff';
+      case 'Youtube':
+        return '#c4302b';
+      case 'Report':
+        return '#9695D7';
+      case 'NEW':
+        return '#8bdb81';
+      default:
+        throw new Error(`unknown :${tab}`);
+    }
+  }
+
   return (
-    <StyledTitle>
+    <StyledTitle bgColor={getColor(tab)}>
       <h1>{text}</h1>
       <div>{tab}</div>
     </StyledTitle>
@@ -18,7 +33,7 @@ Title.propTypes = {
 };
 Title.defaultProps = {
   text: '',
-  tab: '',
+  tab: 'NEW',
 };
 
 const StyledTitle = styled.div`
@@ -32,9 +47,9 @@ const StyledTitle = styled.div`
   div {
     font-size: 1.5rem;
     color: #fff;
-    background-color: #669cff;
     padding: 5px 25px;
     border-radius: 5px;
     margin-left: 15px;
+    background-color: ${(props) => props.bgColor};
   }
 `;

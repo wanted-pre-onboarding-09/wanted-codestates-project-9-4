@@ -48,9 +48,9 @@ const LikesImg = styled.span`
   > .heart-empty {
     position: absolute;
     z-index: 1;
-    animation: ${change2} 1s forwards;
+    animation: ${change2} 0.7s forwards;
     &.clicked {
-      animation: ${change1} 1s forwards;
+      animation: ${change1} 0.7s forwards;
       z-index: 0;
     }
   }
@@ -58,9 +58,9 @@ const LikesImg = styled.span`
   > .heart-full {
     position: absolute;
     z-index: 0;
-    animation: ${change1} 1s forwards;
+    animation: ${change1} 0.7s forwards;
     &.clicked {
-      animation: ${change2} 1s forwards;
+      animation: ${change2} 0.7s forwards;
       z-index: 1;
     }
   }

@@ -46,13 +46,21 @@ const ShareContainer = styled.span`
 `;
 
 // eslint-disable-next-line react/prop-types
-function Share({ url }) {
+function Share({ url, sectorId }) {
   let cleanUp = false;
   const [clicked, setClicked] = useState(false);
   const ShareHandler = async () => {
     setClicked(true);
     setTimeout(() => {
-      window.open(url, '_blank'); /* 2초 뒤에 새창 띄위기 */
+      // eslint-disable-next-line camelcase
+      if (sectorId !== 2) {
+        window.open(url, '_blank'); /* 2초 뒤에 새창 띄위기 */
+      } else {
+        window.open(
+          `https://youtu.be/${url}`,
+          '_blank',
+        ); /* 2초 뒤에 새창 띄위기 */
+      }
     }, 2000);
 
     cleanUp = true;
