@@ -8,6 +8,8 @@ import ContentYoutube from '../atoms/ContentYoutube';
 import ContentBody from '../atoms/ContentBody';
 import ContentMove from '../atoms/ContentMove';
 import BackArrow from '../atoms/BackArrow';
+import Likes from '../atoms/Likes';
+import Share from '../atoms/Share';
 
 function DetailList({ contents }) {
   console.log(contents);
@@ -36,6 +38,10 @@ function DetailList({ contents }) {
               <ContentBody body={content.body} />
             </div>
           )}
+          <div className="like-share">
+            <Likes id={content.id} likeCnt={content.like_cnt} />
+            <Share url={content.link} />
+          </div>
           {content.sector_id === 2 ? null : (
             <div className="detail-move">
               <ContentMove move={content.link} />
