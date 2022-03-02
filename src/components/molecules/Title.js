@@ -3,23 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function Title({ text, tab }) {
-  function getColor(tab) {
-    switch (tab) {
-      case 'News':
-        return '#6691ff';
-      case 'Youtube':
-        return '#c4302b';
-      case 'Report':
-        return '#9695D7';
-      case 'NEW':
-        return '#8bdb81';
-      default:
-        throw new Error(`unknown :${tab}`);
-    }
-  }
-
   return (
-    <StyledTitle bgColor={getColor(tab)}>
+    <StyledTitle tabName={tab}>
       <h1>{text}</h1>
       <div>{tab}</div>
     </StyledTitle>
@@ -49,8 +34,22 @@ const StyledTitle = styled.div`
     padding: 0.4rem 1rem;
     border-radius: 5px;
     margin-left: 1rem;
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => {
+      switch (props.tabName) {
+        case 'NEW':
+          return props.theme.colors.lightBlue;
+        case 'Youtube':
+          return props.theme.colors.red;
+        case 'Report':
+          return props.theme.colors.puple;
+        case 'News':
+          return props.theme.colors.green;
+        default:
+          throw new Error(`unknown :${props.tabName}`);
+      }
+    }};
   }
+
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
   }

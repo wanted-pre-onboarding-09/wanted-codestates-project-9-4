@@ -45,18 +45,15 @@ const StyledLink = styled(Link)`
     color: black;
     text-decoration: none;
   }
-
   &:visited {
     //사용자가 방문한적이 있는
     color: black;
     text-decoration: none;
   }
-
   &:hover {
     //마우스를 링크에 올려두었을 때
     color: black;
   }
-
   &:active {
     //클릭 후 뗄 떼까지
     color: black;
