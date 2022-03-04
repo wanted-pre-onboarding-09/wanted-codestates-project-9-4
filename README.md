@@ -15,9 +15,9 @@
 
 |  이름  |    Role     |
 | :----: | :---------: |
-| 손영산 | Team Leader |
+| 유송현 | Team Leader |
 | 서한석 | Team Member |
-| 유송현 | Team member |
+| 손영산 | Team member |
 | 윤솔비 | Team member |
 | 이지수 | Team member |
 | 조영제 | Team member |
