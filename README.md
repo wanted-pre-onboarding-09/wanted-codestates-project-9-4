@@ -321,6 +321,17 @@ const contentsRange = contents.slice(0, range ? 6 : contents.length);
 - Mac/Linux: `package.json`파일에 scripts 부분에 `"start": "export PORT=8888 && react-scripts start",` 추가
 - Windows: `package.json`파일에 scripts 부분에 `"start": "set PORT=8888 && react-scripts start",` 추가
 
+## 서한석
+### 작업 성과
+- 원자 단위 컴포넌트 keyframes 애니메이션 작업
+  - 좋아요 버튼 (파일 위치: src/components/atoms/Likes.js [코드 보기](https://github.com/wanted-pre-onboarding-09/wanted-codestates-project-9-4/blob/dev/src/components/atoms/Likes.js))
+    
+    <img src="https://user-images.githubusercontent.com/87353284/163504670-45e0fee1-1441-4054-88f5-11b4f191bbb7.gif" width="20%" />
+    
+  - 공유하기 버튼 (파일 위치: src/components/atoms/Share.js [코드 보기](https://github.com/wanted-pre-onboarding-09/wanted-codestates-project-9-4/blob/dev/src/components/atoms/Share.js))
+    
+    <img src="https://user-images.githubusercontent.com/87353284/163505563-375a533e-b549-4cb6-aabd-2e9925999665.gif" width="20%" />
+
 ## 디렉터리 구조
 
 ```bash
